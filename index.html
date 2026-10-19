@@ -1,0 +1,1304 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Gestoría Automotor Efata — Sus trámites, nuestra responsabilidad
+    </title>
+    <meta
+      name="description"
+      content="Gestoría Automotor Efata. Transferencias, cédula verde, verificación policial, informes de dominio y descuentos en infracciones de todo el país. Consultas sin cargo por WhatsApp."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #0f3b73;
+        --navy-deep: #081f40;
+        --navy-mid: #16497f;
+        --paper: #f4f0e6;
+        --paper-2: #eae4d4;
+        --ink: #0b1a2e;
+        --yellow: #f4b400;
+        --wa: #25d366;
+        --wa-dark: #128c4a;
+        --radius: 14px;
+        --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+        --body: "Plus Jakarta Sans", system-ui, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--body);
+        color: var(--ink);
+        background: var(--paper);
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.5;
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        width: min(1180px, 100% - 40px);
+        margin-inline: auto;
+      }
+
+      /* ---------- Botón WhatsApp ---------- */
+      .btn-wa {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        background: var(--wa);
+        color: #05260f;
+        font-weight: 600;
+        font-size: 1.05rem;
+        padding: 0.95rem 1.5rem;
+        border-radius: 999px;
+        box-shadow:
+          0 8px 0 var(--wa-dark),
+          0 16px 30px rgba(0, 0, 0, 0.28);
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
+      }
+      .btn-wa:hover {
+        transform: translateY(3px);
+        box-shadow:
+          0 5px 0 var(--wa-dark),
+          0 10px 22px rgba(0, 0, 0, 0.28);
+      }
+      .btn-wa:active {
+        transform: translateY(8px);
+        box-shadow: 0 0 0 var(--wa-dark);
+      }
+      .btn-wa svg {
+        width: 24px;
+        height: 24px;
+        flex: none;
+      }
+      .btn-wa.sm {
+        font-size: 0.92rem;
+        padding: 0.6rem 1.1rem;
+        box-shadow: 0 4px 0 var(--wa-dark);
+      }
+      .btn-wa.sm:hover {
+        box-shadow: 0 2px 0 var(--wa-dark);
+        transform: translateY(2px);
+      }
+      /* Variantes sin verde: el verde queda para los CTA principales */
+      .btn-wa.ghost {
+        background: transparent;
+        color: var(--paper);
+        border: 2px solid rgba(244, 240, 230, 0.55);
+        box-shadow: none;
+      }
+      .btn-wa.ghost:hover {
+        background: var(--paper);
+        color: var(--navy-deep);
+        border-color: var(--paper);
+        box-shadow: none;
+        transform: none;
+      }
+      .btn-wa.paper {
+        background: var(--paper);
+        color: var(--navy-deep);
+        box-shadow:
+          0 8px 0 var(--yellow),
+          0 16px 30px rgba(0, 0, 0, 0.28);
+      }
+      .btn-wa.paper:hover {
+        box-shadow:
+          0 5px 0 var(--yellow),
+          0 10px 22px rgba(0, 0, 0, 0.28);
+      }
+      .btn-wa.paper:active {
+        box-shadow: 0 0 0 var(--yellow);
+      }
+
+      /* ---------- Top bar ---------- */
+      header.top {
+        position: absolute;
+        inset: 0 0 auto 0;
+        z-index: 5;
+        padding: 20px 0;
+      }
+      header.top .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        color: var(--paper);
+      }
+      .brand svg {
+        width: 64px;
+        height: auto;
+        flex: none;
+      }
+      .brand-name {
+        font-family: var(--display);
+        font-weight: 700;
+        line-height: 0.95;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+      }
+      .brand-name small {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        opacity: 0.8;
+      }
+      .brand-name b {
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1.4rem;
+      }
+      .nav-link {
+        font-family: var(--display);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 1.05rem;
+        color: var(--paper);
+        padding: 0.3rem 0;
+        border-bottom: 3px solid transparent;
+        transition: border-color 0.18s, color 0.18s;
+      }
+      .nav-link:hover,
+      .nav-link:focus-visible {
+        color: var(--yellow);
+        border-color: var(--yellow);
+        outline: 0;
+      }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        position: relative;
+        background: var(--navy-deep);
+        color: var(--paper);
+        padding: 150px 0 110px;
+        overflow: hidden;
+        isolation: isolate;
+      }
+      /* ruta con línea punteada */
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: auto -10% 62px -10%;
+        height: 0;
+        z-index: -1;
+        border-top: 6px dashed rgba(244, 240, 230, 0.18);
+        transform: rotate(-3deg);
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        right: -12%;
+        top: -30%;
+        width: 70vw;
+        height: 70vw;
+        max-width: 900px;
+        max-height: 900px;
+        background: radial-gradient(circle, var(--navy-mid) 0, transparent 65%);
+        z-index: -1;
+        opacity: 0.7;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+        gap: 3rem;
+        align-items: center;
+      }
+      .eyebrow {
+        font-family: var(--display);
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-size: 1rem;
+        color: var(--yellow);
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin-bottom: 1.2rem;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 38px;
+        height: 3px;
+        background: var(--yellow);
+      }
+      h1 {
+        font-family: var(--display);
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: clamp(2.6rem, 7.4vw, 5.6rem);
+        overflow-wrap: break-word;
+        line-height: 0.88;
+        letter-spacing: -0.005em;
+      }
+      h1 em {
+        font-style: normal;
+        position: relative;
+        display: inline-block;
+        color: var(--paper);
+      }
+      h1 em::after {
+        content: "";
+        position: absolute;
+        left: -2%;
+        right: -2%;
+        bottom: 0.04em;
+        height: 0.16em;
+        background: var(--yellow);
+        z-index: -1;
+        transform: skewX(-14deg);
+      }
+      .hero p.lead {
+        font-family: "Plus Jakarta Sans", var(--body);
+        font-weight: 400;
+        line-height: 1.6;
+        font-size: clamp(1rem, 2vw, 1.15rem);
+        max-width: 30rem;
+        margin: 1.6rem 0 2.2rem;
+        color: #d6dfec;
+      }
+      .hero-cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem 1.6rem;
+        align-items: center;
+      }
+      .hero-cta .free {
+        font-size: 0.95rem;
+        color: #b5c4da;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .hero-cta .free i {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--yellow);
+        box-shadow: 0 0 0 4px rgba(244, 180, 0, 0.25);
+      }
+
+      /* patente */
+      .plate-stage {
+        position: relative;
+        min-height: 340px;
+        display: grid;
+        place-items: center;
+      }
+      .plate {
+        width: min(420px, 100%);
+        aspect-ratio: 2.2/1;
+        background: #fff;
+        border-radius: 16px;
+        border: 5px solid #0b1a2e;
+        position: relative;
+        transform: rotate(-5deg);
+        box-shadow:
+          0 30px 60px rgba(0, 0, 0, 0.45),
+          inset 0 0 0 3px #fff,
+          inset 0 0 0 5px #c9d3e0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .plate-top {
+        background: var(--navy);
+        color: #fff;
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(0.7rem, 1.6vw, 0.92rem);
+        letter-spacing: 0.35em;
+        text-align: center;
+        padding: 0.3rem 0 0.25rem;
+        text-transform: uppercase;
+      }
+      .plate-chars {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.28em;
+        font-family: var(--display);
+        font-weight: 700;
+        color: #0b1a2e;
+        font-size: clamp(2.8rem, 8vw, 5.2rem);
+        letter-spacing: 0.04em;
+        line-height: 1;
+        white-space: nowrap;
+      }
+      .plate-chars span {
+        color: var(--navy);
+      }
+      .plate-bottom {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 0.9rem 0.4rem;
+        font-size: 0.62rem;
+        letter-spacing: 0.3em;
+        font-weight: 600;
+        color: #5a6b82;
+        text-transform: uppercase;
+      }
+      .plate::before,
+      .plate::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 35%, #e4e9f0, #8b97a8);
+        box-shadow: inset 0 0 0 1px #6f7c8f;
+      }
+      .plate::before {
+        left: 12px;
+        transform: translateY(-50%);
+      }
+      .plate::after {
+        right: 12px;
+        transform: translateY(-50%);
+      }
+
+      .stamp {
+        position: absolute;
+        font-family: var(--display);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        border: 3px solid;
+        padding: 0.25rem 0.8rem;
+        border-radius: 6px;
+        font-size: 1.35rem;
+        line-height: 1.1;
+        background: rgba(8, 31, 64, 0.35);
+        backdrop-filter: blur(2px);
+      }
+      .stamp.ok {
+        color: var(--paper);
+        border-color: var(--paper);
+        right: 0;
+        top: 6%;
+        transform: rotate(8deg);
+      }
+      .stamp.pol {
+        color: var(--yellow);
+        border-color: var(--yellow);
+        left: -2%;
+        bottom: 6%;
+        transform: rotate(-7deg);
+        font-size: 1.05rem;
+      }
+
+      /* ---------- Cinta de trámites ---------- */
+      .ribbon {
+        background: var(--yellow);
+        color: var(--navy-deep);
+        overflow: hidden;
+        border-block: 4px solid var(--navy-deep);
+        transform: rotate(-1deg);
+        margin: -34px -2% 0;
+        position: relative;
+        z-index: 3;
+      }
+      .ribbon-track {
+        display: flex;
+        width: max-content;
+        animation: run 38s linear infinite;
+      }
+      .ribbon span {
+        font-family: var(--display);
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        letter-spacing: 0.06em;
+        padding: 0.55rem 1.4rem;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 2.8rem;
+      }
+      .ribbon span::after {
+        content: "◆";
+        font-size: 0.8rem;
+      }
+      @keyframes run {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ---------- Servicios ---------- */
+      section {
+        position: relative;
+      }
+      .services {
+        padding: 120px 0 90px;
+        background:
+          url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .1  0 0 0 0 .15  0 0 0 0 .25  0 0 0 .05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+          var(--paper);
+      }
+      .sec-head {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: end;
+        gap: 1rem 3rem;
+        margin-bottom: 3rem;
+      }
+      h2 {
+        font-family: var(--display);
+        font-weight: 800;
+        text-transform: uppercase;
+        line-height: 0.92;
+        font-size: clamp(2.4rem, 6vw, 4.4rem);
+        color: var(--navy-deep);
+        max-width: 14ch;
+      }
+      .sec-head p {
+        max-width: 26rem;
+        color: #3d4e66;
+        font-size: 1.05rem;
+      }
+      .folders {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.6rem;
+      }
+      .folder {
+        position: relative;
+        padding-top: 34px;
+      }
+      .folder-tab {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: var(--navy);
+        color: var(--paper);
+        font-family: var(--display);
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 0.95rem;
+        padding: 0.35rem 1.1rem 0.3rem;
+        border-radius: 10px 10px 0 0;
+      }
+      .folder-body {
+        background: #fff;
+        border: 2px solid var(--navy-deep);
+        border-radius: 0 var(--radius) var(--radius) var(--radius);
+        box-shadow: 7px 7px 0 var(--navy-deep);
+        overflow: hidden;
+      }
+      .svc {
+        display: grid;
+        grid-template-columns: 2.4rem 1fr auto;
+        gap: 0.5rem;
+        align-items: center;
+        padding: 1.05rem 1.2rem;
+        border-bottom: 1.5px dashed #b9c3d3;
+        transition:
+          background 0.18s,
+          color 0.18s,
+          padding 0.18s;
+      }
+      .svc:last-child {
+        border-bottom: 0;
+      }
+      .svc .n {
+        font-family: var(--display);
+        font-weight: 700;
+        color: #8aa0bd;
+        font-size: 1.05rem;
+      }
+      .svc .t {
+        font-family: var(--display);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 1.3rem;
+        line-height: 1.05;
+        letter-spacing: 0.02em;
+      }
+      .svc .t small {
+        display: block;
+        font-family: var(--body);
+        font-weight: 500;
+        text-transform: none;
+        font-size: 0.82rem;
+        color: #6b7b92;
+        letter-spacing: 0;
+        margin-top: 0.15rem;
+      }
+      .svc .go {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--navy);
+        opacity: 0;
+        transform: translateX(-6px);
+        transition: 0.18s;
+        white-space: nowrap;
+      }
+      .svc:hover,
+      .svc:focus-visible {
+        background: var(--navy);
+        color: #fff;
+        padding-left: 1.5rem;
+        outline: 0;
+      }
+      .svc:hover .n {
+        color: var(--yellow);
+      }
+      .svc:hover small {
+        color: #b5c4da;
+      }
+      .svc:hover .go,
+      .svc:focus-visible .go {
+        opacity: 1;
+        transform: none;
+        color: var(--yellow);
+      }
+      .hint {
+        margin-top: 2rem;
+        font-size: 0.95rem;
+        color: #51627c;
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+      }
+      .hint::before {
+        content: "→";
+        font-weight: 700;
+        color: var(--navy);
+      }
+
+      /* ---------- Infracciones ---------- */
+      .fines {
+        background: var(--navy);
+        padding: 100px 0;
+        overflow: hidden;
+        color: var(--paper);
+      }
+      .fines::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          -45deg,
+          transparent 0 22px,
+          rgba(255, 255, 255, 0.035) 22px 44px
+        );
+      }
+      .fines .wrap {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 3.5rem;
+        align-items: center;
+      }
+      .fines h2 {
+        color: var(--paper);
+        max-width: 12ch;
+      }
+      .fines h2 em {
+        font-style: normal;
+        color: var(--yellow);
+      }
+      .fines p {
+        margin: 1.3rem 0 2rem;
+        max-width: 30rem;
+        color: #cdd9ea;
+        font-size: 1.1rem;
+      }
+
+      .ticket {
+        position: relative;
+        background: var(--yellow);
+        color: var(--navy-deep);
+        padding: 2rem 2rem 2.2rem;
+        transform: rotate(2.5deg);
+        border-radius: 6px;
+        --m:
+          radial-gradient(circle 13px at 0 50%, #0000 98%, #000) left/51% 40px
+            repeat-y,
+          radial-gradient(circle 13px at 100% 50%, #0000 98%, #000) right/51%
+            40px repeat-y;
+        -webkit-mask: var(--m);
+        mask: var(--m);
+        filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.4));
+      }
+      .ticket .tk-top {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        border-bottom: 2px dashed rgba(8, 31, 64, 0.45);
+        padding-bottom: 0.8rem;
+        margin-bottom: 1.3rem;
+      }
+      .ticket .q {
+        font-family: var(--display);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        letter-spacing: 0.04em;
+      }
+      .ticket .big {
+        font-family: var(--display);
+        font-weight: 800;
+        text-transform: uppercase;
+        line-height: 0.88;
+        font-size: clamp(3.2rem, 8vw, 5.4rem);
+        margin: 0.4rem 0 1rem;
+      }
+      .ticket .big span {
+        background: var(--navy-deep);
+        color: var(--yellow);
+        padding: 0 0.15em;
+        display: inline-block;
+        transform: skewX(-6deg);
+      }
+      .ticket .foot {
+        font-family: var(--display);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 1.15rem;
+        border-top: 2px dashed rgba(8, 31, 64, 0.45);
+        padding-top: 0.9rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      /* ---------- Pasos ---------- */
+      .steps {
+        padding: 100px 0;
+        background: var(--paper);
+      }
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+        counter-reset: s;
+      }
+      .step {
+        position: relative;
+        padding-top: 5.2rem;
+      }
+      .step::before {
+        counter-increment: s;
+        content: "0" counter(s);
+        position: absolute;
+        top: 0;
+        left: -0.4rem;
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 7.5rem;
+        line-height: 0.8;
+        color: transparent;
+        -webkit-text-stroke: 2px var(--navy);
+        opacity: 0.35;
+      }
+      .step h3 {
+        font-family: var(--display);
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 1.75rem;
+        color: var(--navy-deep);
+        line-height: 1;
+        margin-bottom: 0.6rem;
+      }
+      .step p {
+        color: #3d4e66;
+        max-width: 22rem;
+      }
+      .step:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: 2.2rem;
+        right: -1.2rem;
+        width: 2.4rem;
+        border-top: 3px dashed #9db0ca;
+      }
+
+      /* ---------- CTA final ---------- */
+      .final {
+        background: var(--navy-deep);
+        color: var(--paper);
+        padding: 100px 0 70px;
+        text-align: center;
+        overflow: hidden;
+      }
+      .final::before {
+        content: "";
+        position: absolute;
+        left: -10%;
+        right: -10%;
+        top: 48px;
+        border-top: 6px dashed rgba(244, 240, 230, 0.12);
+        transform: rotate(2deg);
+      }
+      .final h2 {
+        color: var(--paper);
+        max-width: none;
+        margin-inline: auto;
+        font-size: clamp(2.6rem, 7.5vw, 6rem);
+      }
+      .final h2 em {
+        font-style: normal;
+        color: var(--yellow);
+      }
+      .final p {
+        margin: 1.4rem auto 2.4rem;
+        max-width: 30rem;
+        color: #b5c4da;
+        font-size: 1.1rem;
+      }
+      .phone {
+        display: block;
+        margin-top: 1.6rem;
+        font-family: var(--display);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        font-size: 1.6rem;
+        color: var(--paper);
+      }
+      footer {
+        background: #050f20;
+        color: #7f93b0;
+        padding: 1.6rem 0;
+        font-size: 0.85rem;
+      }
+      footer .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem 2rem;
+        justify-content: space-between;
+        align-items: center;
+      }
+      footer b {
+        font-family: var(--display);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: #b5c4da;
+      }
+
+      /* ---------- WhatsApp flotante ---------- */
+      .fab {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: var(--wa);
+        color: #05260f;
+        border-radius: 999px;
+        padding: 0.85rem 1.2rem 0.85rem 1rem;
+        font-weight: 600;
+        box-shadow:
+          0 6px 0 var(--wa-dark),
+          0 14px 28px rgba(0, 0, 0, 0.35);
+      }
+      .fab svg {
+        width: 26px;
+        height: 26px;
+      }
+      .fab::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        border: 2px solid var(--wa);
+        animation: ping 2.4s infinite;
+      }
+      @keyframes ping {
+        0% {
+          transform: scale(1);
+          opacity: 0.9;
+        }
+        100% {
+          transform: scale(1.45);
+          opacity: 0;
+        }
+      }
+
+      /* ---------- Entrada suave ---------- */
+      .rv {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.7s,
+          transform 0.7s;
+      }
+      .rv.in {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .rv {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        .ribbon-track,
+        .fab::before {
+          animation: none;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 900px) {
+        .hero {
+          padding: 130px 0 90px;
+        }
+        .hero-grid,
+        .fines .wrap {
+          grid-template-columns: 1fr;
+        }
+        .plate-stage {
+          min-height: 280px;
+          margin-top: 1rem;
+        }
+        .folders {
+          grid-template-columns: 1fr;
+        }
+        .steps-grid {
+          grid-template-columns: 1fr;
+          gap: 2.4rem;
+        }
+        .step:not(:last-child)::after {
+          display: none;
+        }
+        .ticket {
+          transform: rotate(1.5deg);
+        }
+      }
+      @media (max-width: 520px) {
+        .brand svg {
+          width: 50px;
+        }
+        .brand-name b {
+          font-size: 1.5rem;
+        }
+        .brand-name small {
+          font-size: 0.7rem;
+        }
+        .nav-right {
+          gap: 0.8rem;
+        }
+        .nav-link {
+          font-size: 0.95rem;
+          letter-spacing: 0.1em;
+        }
+        header.top .btn-wa span {
+          display: none;
+        }
+        header.top .btn-wa {
+          padding: 0.6rem 0.8rem;
+        }
+        .stamp.ok {
+          font-size: 1.05rem;
+        }
+        .stamp.pol {
+          font-size: 0.9rem;
+        }
+        .fab span {
+          display: none;
+        }
+        .fab {
+          padding: 0.9rem;
+        }
+        .svc .go {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Íconos reutilizables -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="wa" viewBox="0 0 32 32">
+        <path
+          fill="currentColor"
+          d="M16.04 3C9.4 3 4.02 8.37 4.02 15c0 2.12.55 4.18 1.6 6L4 28l7.17-1.88A12 12 0 0 0 16.04 27C22.67 27 28.05 21.63 28.05 15S22.67 3 16.04 3Zm0 21.9c-1.78 0-3.52-.48-5.04-1.38l-.36-.21-3.8 1 1.02-3.7-.24-.38A9.86 9.86 0 0 1 6.1 15c0-5.46 4.46-9.9 9.94-9.9 5.47 0 9.93 4.44 9.93 9.9s-4.46 9.9-9.93 9.9Zm5.45-7.4c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.24-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.53.08-.8.38-.28.3-1.06 1.03-1.06 2.5s1.08 2.9 1.23 3.1c.15.2 2.13 3.24 5.15 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"
+        />
+      </symbol>
+    </svg>
+
+    <header class="top">
+      <div class="wrap">
+        <a class="brand" href="#" aria-label="Gestoría Automotor Efata">
+          <svg
+            viewBox="0 0 124 52"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M6 37c0-6 4-9 10-10l12-3c5-6 12-11 20-12 12-2 25-1 33 6l8 8 14 3c4 1 5 4 5 8"
+            />
+            <path d="M28 24c8-3 20-4 34-3" />
+            <path d="M6 37h13M44 37h38M105 37h9" />
+            <path d="M19 37a12 12 0 0 1 25 0M82 37a12 12 0 0 1 23 0" />
+          </svg>
+          <span class="brand-name"
+            ><small>Gestoría Automotor</small><b>Efata</b></span
+          >
+        </a>
+        <nav class="nav-right">
+          <a class="nav-link" href="#tramites">Trámites</a>
+          <a
+            class="btn-wa sm ghost"
+            data-wa="Hola, quiero hacer una consulta."
+            href="https://wa.me/5491159697828"
+          >
+            <svg><use href="#wa" /></svg><span>Escribinos</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <div class="eyebrow rv">Gestoría del automotor</div>
+            <h1 class="rv">
+              Sus trámites,<br />nuestra <em>responsabilidad</em>
+            </h1>
+            <p class="lead rv">
+              Realizamos todo tipo de trámites registrales, sin vueltas ni
+              filas. Contanos qué necesitás y nos ocupamos del resto.
+            </p>
+            <div class="hero-cta rv">
+              <a
+                class="btn-wa"
+                data-wa="Hola, quiero hacer una consulta."
+                href="https://wa.me/5491159697828"
+              >
+                <svg><use href="#wa" /></svg>Consultá por WhatsApp
+              </a>
+              <span class="free"><i></i>Consultas sin cargo</span>
+            </div>
+          </div>
+
+          <div class="plate-stage rv" aria-hidden="true">
+            <div class="plate">
+              <div class="plate-top">Argentina</div>
+              <div class="plate-chars">EF <span>047</span> TA</div>
+              <div class="plate-bottom">
+                <span>Mercosur</span><span>Efata</span>
+              </div>
+            </div>
+            <div class="stamp ok">Trámite OK</div>
+            <div class="stamp pol">Verificación<br />policial</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CINTA -->
+      <div class="ribbon" aria-hidden="true">
+        <div class="ribbon-track">
+          <span>Transferencias</span><span>Cédula verde</span
+          ><span>Verificación policial</span><span>Informes de dominio</span
+          ><span>Certificado de dominio</span><span>Inscripción inicial</span
+          ><span>Consulta de legajo</span><span>Turnos online</span>
+          <span>Transferencias</span><span>Cédula verde</span
+          ><span>Verificación policial</span><span>Informes de dominio</span
+          ><span>Certificado de dominio</span><span>Inscripción inicial</span
+          ><span>Consulta de legajo</span><span>Turnos online</span>
+        </div>
+      </div>
+
+      <!-- SERVICIOS -->
+      <section class="services" id="tramites">
+        <div class="wrap">
+          <div class="sec-head">
+            <h2 class="rv">Todo tipo de trámites registrales</h2>
+            <p class="rv">
+              Elegí el que necesitás y se abre un WhatsApp con el mensaje ya
+              escrito. Solo tenés que enviarlo.
+            </p>
+          </div>
+
+          <div class="folders">
+            <div class="folder rv">
+              <div class="folder-tab">Compra y venta</div>
+              <div class="folder-body">
+                <a
+                  class="svc"
+                  data-wa="Hola, quiero consultar por una transferencia."
+                  href="https://wa.me/5491159697828"
+                  ><span class="n">01</span><span class="t">Transferencias</span
+                  ><span class="go">Consultar →</span></a
+                >
+                <a
+                  class="svc"
+                  data-wa="Hola, quiero consultar por una inscripción inicial."
+                  href="https://wa.me/5491159697828"
+                  ><span class="n">02</span
+                  ><span class="t">Inscripción inicial</span
+                  ><span class="go">Consultar →</span></a
+                >
+                <a
+                  class="svc"
+                  data-wa="Hola, quiero consultar por una denuncia de compra y venta."
+                  href="https://wa.me/5491159697828"
+                  ><span class="n">03</span
+                  ><span class="t">Denuncia de compra y venta</span
+                  ><span class="go">Consultar →</span></a
+                >
+                <a
+                  class="svc"
+                  data-wa="Hola, quiero consultar por un trámite de poseedor."
+                  href="https://wa.me/5491159697828"
+                  ><span class="n">04</span><span class="t">Poseedor</span
+                  ><span class="go">Consultar →</span></a
+                >
+              </div>
+            </div>
+
+            <div class="folder rv">
+              <div class="folder-tab">Documentación</div>
+              <div class="folder-body">
+                <a
+                  class="svc"
+                  data-wa="Hola, quiero consultar por la cédula verde."
+                  href="https://wa.me/5491159697828"
+                  ><span class="n">05</span><span class="t">Cédula verde</span
+                  ><span class="go">Consultar →</span></a
+                >
+                <a
+                  class="svc"
+                  data-wa="Hola, quiero consultar por un certificado de dominio."
+                  href="https://wa.me/5491159697828"
+                  ><span class="n">06</span
+                  ><span class="t">Certificado de dominio</span
+                  ><span class="go">Consultar →</span></a
+                >
+                <a
+                  class="svc"
+                  data-wa="Hola, quiero consultar por un cambio de uso o tipo."
+                  href="https://wa.me/5491159697828"
+                  ><span class="n">07</span
+                  ><span class="t">Cambio de uso / tipo</span
+                  ><span class="go">Consultar →</span></a
+                >
+                <a
+                  class="svc"
+                  data-wa="Hola, quiero consultar por altas o bajas de motor/carrocería."
+                  href="https://wa.me/5491159697828"
+                  ><span class="n">08</span
+                  ><span class="t">Altas y bajas de motor / carrocería</span
+                  ><span class="go">Consultar →</span></a
+                >
+              </div>
+            </div>
+
+            <div class="folder rv">
+              <div class="folder-tab">Informes y gestiones</div>
+              <div class="folder-body">
+                <a
+                  class="svc"
+                  data-wa="Hola, quiero consultar por una verificación policial."
+                  href="https://wa.me/5491159697828"
+                  ><span class="n">09</span
+                  ><span class="t">Verificación policial</span
+                  ><span class="go">Consultar →</span></a
+                >
+                <a
+                  class="svc"
+                  data-wa="Hola, quiero pedir un informe de dominio, infracciones o patente."
+                  href="https://wa.me/5491159697828"
+                  ><span class="n">10</span
+                  ><span class="t"
+                    >Informes<small
+                      >Dominio · infracciones · patente</small
+                    ></span
+                  ><span class="go">Consultar →</span></a
+                >
+                <a
+                  class="svc"
+                  data-wa="Hola, quiero consultar por una consulta de legajo."
+                  href="https://wa.me/5491159697828"
+                  ><span class="n">11</span
+                  ><span class="t">Consulta de legajo</span
+                  ><span class="go">Consultar →</span></a
+                >
+                <a
+                  class="svc"
+                  data-wa="Hola, quiero consultar por un turno online."
+                  href="https://wa.me/5491159697828"
+                  ><span class="n">12</span><span class="t">Turnos online</span
+                  ><span class="go">Consultar →</span></a
+                >
+              </div>
+            </div>
+          </div>
+          <p class="hint rv">
+            ¿No ves tu trámite? Escribinos igual: seguro lo resolvemos.
+          </p>
+        </div>
+      </section>
+
+      <!-- INFRACCIONES -->
+      <section class="fines" id="infracciones">
+        <div class="wrap">
+          <div>
+            <h2 class="rv">
+              Infracciones de tránsito: <em>no pagues demás</em>
+            </h2>
+            <p class="rv">
+              Realizamos descuentos en infracciones de todo el país. Mandanos tu
+              consulta y te contamos qué se puede hacer, sin compromiso.
+            </p>
+            <a
+              class="btn-wa paper rv"
+              data-wa="Hola, tengo infracciones de tránsito y quiero consultar por un descuento."
+              href="https://wa.me/5491159697828"
+            >
+              <svg><use href="#wa" /></svg>Consultar mi infracción
+            </a>
+          </div>
+          <div class="ticket rv" aria-hidden="true">
+            <div class="tk-top">
+              <span>Infracciones</span><span>Todo el país</span>
+            </div>
+            <div class="q">¿Tenés infracciones<br />de tránsito?</div>
+            <div class="big"><span>No pagues</span><br />demás</div>
+            <div class="foot">
+              <span>Descuentos</span><span>Consultas sin cargo</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PASOS -->
+      <section class="steps">
+        <div class="wrap">
+          <h2 class="rv">Así de simple</h2>
+          <div class="steps-grid">
+            <div class="step rv">
+              <h3>Escribinos</h3>
+              <p>
+                Contanos por WhatsApp qué trámite necesitás. La consulta no
+                tiene cargo.
+              </p>
+            </div>
+            <div class="step rv">
+              <h3>Te orientamos</h3>
+              <p>
+                Te decimos qué documentación hace falta y cómo sigue el proceso.
+              </p>
+            </div>
+            <div class="step rv">
+              <h3>Nos ocupamos</h3>
+              <p>Hacemos el trámite por vos. Vos seguís con tu día.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA FINAL -->
+      <section class="final">
+        <div class="wrap">
+          <h2 class="rv">Tu trámite, <em>en buenas manos</em></h2>
+          <p class="rv">
+            Una consulta no cuesta nada. Escribinos y arrancamos.
+          </p>
+          <a
+            class="btn-wa rv"
+            data-wa="Hola, quiero hacer una consulta."
+            href="https://wa.me/5491159697828"
+          >
+            <svg><use href="#wa" /></svg>Escribinos por WhatsApp
+          </a>
+          <a class="phone rv" href="https://wa.me/5491159697828"
+            >11 5969 7828</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <b>Gestoría Automotor Efata</b>
+        <span>Consultas sin cargo · WhatsApp 11 5969 7828</span>
+      </div>
+    </footer>
+
+    <a
+      class="fab"
+      data-wa="Hola, quiero hacer una consulta."
+      href="https://wa.me/5491159697828"
+      aria-label="Escribinos por WhatsApp"
+    >
+      <svg><use href="#wa" /></svg><span>WhatsApp</span>
+    </a>
+
+    <script>
+      // Arma cada link de WhatsApp con su mensaje precargado
+      const NUM = "5491159697828";
+      document.querySelectorAll("[data-wa]").forEach((a) => {
+        a.href =
+          "https://wa.me/" + NUM + "?text=" + encodeURIComponent(a.dataset.wa);
+        a.target = "_blank";
+        a.rel = "noopener";
+      });
+
+      // Aparición suave al hacer scroll
+      const io = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          }),
+        { threshold: 0.12 },
+      );
+      document.querySelectorAll(".rv").forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>
