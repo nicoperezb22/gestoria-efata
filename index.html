@@ -18,13 +18,13 @@
     />
     <style>
       :root {
-        --navy: #0f3b73;
-        --navy-deep: #081f40;
-        --navy-mid: #16497f;
-        --paper: #f4f0e6;
-        --paper-2: #eae4d4;
-        --ink: #0b1a2e;
-        --yellow: #f4b400;
+        --navy: #0f3260;
+        --navy-deep: #0a2347;
+        --navy-mid: #1e4f8c;
+        --paper: #f4f8fc;
+        --paper-2: #e4edf7;
+        --ink: #0b2447;
+        --accent: #8cc0f2;
         --wa: #25d366;
         --wa-dark: #128c4a;
         --radius: 14px;
@@ -102,7 +102,7 @@
       .btn-wa.ghost {
         background: transparent;
         color: var(--paper);
-        border: 2px solid rgba(244, 240, 230, 0.55);
+        border: 2px solid rgba(244, 248, 252, 0.55);
         box-shadow: none;
       }
       .btn-wa.ghost:hover {
@@ -116,16 +116,16 @@
         background: var(--paper);
         color: var(--navy-deep);
         box-shadow:
-          0 8px 0 var(--yellow),
+          0 8px 0 var(--accent),
           0 16px 30px rgba(0, 0, 0, 0.28);
       }
       .btn-wa.paper:hover {
         box-shadow:
-          0 5px 0 var(--yellow),
+          0 5px 0 var(--accent),
           0 10px 22px rgba(0, 0, 0, 0.28);
       }
       .btn-wa.paper:active {
-        box-shadow: 0 0 0 var(--yellow);
+        box-shadow: 0 0 0 var(--accent);
       }
 
       /* ---------- Top bar ---------- */
@@ -186,12 +186,17 @@
         color: var(--paper);
         padding: 0.3rem 0;
         border-bottom: 3px solid transparent;
-        transition: border-color 0.18s, color 0.18s;
+        transition:
+          border-color 0.18s,
+          color 0.18s;
+      }
+      .nav-link .short {
+        display: none;
       }
       .nav-link:hover,
       .nav-link:focus-visible {
-        color: var(--yellow);
-        border-color: var(--yellow);
+        color: var(--accent);
+        border-color: var(--accent);
         outline: 0;
       }
 
@@ -211,7 +216,7 @@
         inset: auto -10% 62px -10%;
         height: 0;
         z-index: -1;
-        border-top: 6px dashed rgba(244, 240, 230, 0.18);
+        border-top: 6px dashed rgba(244, 248, 252, 0.18);
         transform: rotate(-3deg);
       }
       .hero::after {
@@ -239,7 +244,7 @@
         letter-spacing: 0.22em;
         text-transform: uppercase;
         font-size: 1rem;
-        color: var(--yellow);
+        color: var(--accent);
         display: flex;
         align-items: center;
         gap: 0.7rem;
@@ -249,7 +254,7 @@
         content: "";
         width: 38px;
         height: 3px;
-        background: var(--yellow);
+        background: var(--accent);
       }
       h1 {
         font-family: var(--display);
@@ -273,7 +278,7 @@
         right: -2%;
         bottom: 0.04em;
         height: 0.16em;
-        background: var(--yellow);
+        background: var(--accent);
         z-index: -1;
         transform: skewX(-14deg);
       }
@@ -303,8 +308,8 @@
         width: 9px;
         height: 9px;
         border-radius: 50%;
-        background: var(--yellow);
-        box-shadow: 0 0 0 4px rgba(244, 180, 0, 0.25);
+        background: var(--accent);
+        box-shadow: 0 0 0 4px rgba(140, 192, 242, 0.3);
       }
 
       /* patente */
@@ -399,7 +404,7 @@
         border-radius: 6px;
         font-size: 1.35rem;
         line-height: 1.1;
-        background: rgba(8, 31, 64, 0.35);
+        background: rgba(10, 35, 71, 0.35);
         backdrop-filter: blur(2px);
       }
       .stamp.ok {
@@ -410,8 +415,8 @@
         transform: rotate(8deg);
       }
       .stamp.pol {
-        color: var(--yellow);
-        border-color: var(--yellow);
+        color: var(--accent);
+        border-color: var(--accent);
         left: -2%;
         bottom: 6%;
         transform: rotate(-7deg);
@@ -420,7 +425,7 @@
 
       /* ---------- Cinta de trámites ---------- */
       .ribbon {
-        background: var(--yellow);
+        background: var(--accent);
         color: var(--navy-deep);
         overflow: hidden;
         border-block: 4px solid var(--navy-deep);
@@ -574,7 +579,7 @@
         outline: 0;
       }
       .svc:hover .n {
-        color: var(--yellow);
+        color: var(--accent);
       }
       .svc:hover small {
         color: #b5c4da;
@@ -583,7 +588,7 @@
       .svc:focus-visible .go {
         opacity: 1;
         transform: none;
-        color: var(--yellow);
+        color: var(--accent);
       }
       .hint {
         margin-top: 2rem;
@@ -629,7 +634,7 @@
       }
       .fines h2 em {
         font-style: normal;
-        color: var(--yellow);
+        color: var(--accent);
       }
       .fines p {
         margin: 1.3rem 0 2rem;
@@ -640,7 +645,7 @@
 
       .ticket {
         position: relative;
-        background: var(--yellow);
+        background: var(--accent);
         color: var(--navy-deep);
         padding: 2rem 2rem 2.2rem;
         transform: rotate(2.5deg);
@@ -661,7 +666,7 @@
         letter-spacing: 0.18em;
         font-size: 0.72rem;
         text-transform: uppercase;
-        border-bottom: 2px dashed rgba(8, 31, 64, 0.45);
+        border-bottom: 2px dashed rgba(10, 35, 71, 0.45);
         padding-bottom: 0.8rem;
         margin-bottom: 1.3rem;
       }
@@ -682,7 +687,7 @@
       }
       .ticket .big span {
         background: var(--navy-deep);
-        color: var(--yellow);
+        color: var(--accent);
         padding: 0 0.15em;
         display: inline-block;
         transform: skewX(-6deg);
@@ -693,12 +698,204 @@
         text-transform: uppercase;
         letter-spacing: 0.08em;
         font-size: 1.15rem;
-        border-top: 2px dashed rgba(8, 31, 64, 0.45);
+        border-top: 2px dashed rgba(10, 35, 71, 0.45);
         padding-top: 0.9rem;
         display: flex;
         justify-content: space-between;
         gap: 1rem;
         flex-wrap: wrap;
+      }
+
+      /* ---------- Cámara de calle (fondo de infracciones) ---------- */
+      .fines .cam {
+        position: absolute;
+        top: 8px;
+        right: 1%;
+        width: min(600px, 58vw);
+        height: auto;
+        overflow: visible;
+        color: var(--paper);
+        opacity: 0.34;
+        pointer-events: none;
+        stroke: currentColor;
+        stroke-width: 5;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+      }
+      .cam rect,
+      .cam ellipse {
+        fill: var(--navy);
+      }
+      .cam .cone {
+        stroke: var(--accent);
+        stroke-width: 3;
+        stroke-dasharray: 6 12;
+      }
+      .cam .led {
+        fill: var(--accent);
+        stroke: none;
+        animation: blink 2.2s steps(1) infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0.15;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .cam .led {
+          animation: none;
+        }
+      }
+
+      /* ---------- Quiénes somos ---------- */
+      .about {
+        padding: 100px 0;
+        background: #fff;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: 3.5rem;
+        align-items: center;
+      }
+      .about h2 {
+        max-width: none;
+        margin-bottom: 1.4rem;
+      }
+      .about p {
+        color: #3d4e66;
+        font-size: 1.08rem;
+        max-width: 34rem;
+      }
+      .about p + p {
+        margin-top: 1rem;
+      }
+      .pillars {
+        list-style: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.3rem 1.6rem;
+        margin-top: 2rem;
+      }
+      .pillars li {
+        display: grid;
+        grid-template-columns: 2.2rem 1fr;
+        column-gap: 0.8rem;
+        align-items: start;
+      }
+      .pillars li::before {
+        content: "✓";
+        grid-row: span 2;
+        display: grid;
+        place-items: center;
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 50%;
+        background: var(--paper-2);
+        color: var(--navy);
+        font-weight: 600;
+      }
+      .pillars b {
+        font-family: var(--display);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        font-size: 1.15rem;
+        line-height: 1.1;
+        color: var(--navy-deep);
+      }
+      .pillars span {
+        font-size: 0.92rem;
+        color: #51627c;
+      }
+      .about-card {
+        background: var(--navy);
+        color: var(--paper);
+        border-radius: var(--radius);
+        padding: 2.8rem 2rem;
+        text-align: center;
+        transform: rotate(1.5deg);
+        box-shadow: 9px 9px 0 var(--accent);
+      }
+      .about-card svg {
+        width: 120px;
+        height: auto;
+        margin-bottom: 1.2rem;
+      }
+      .about-card h3 {
+        font-family: var(--display);
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        line-height: 0.95;
+      }
+      .about-card span {
+        display: block;
+        margin-top: 1.1rem;
+        padding-top: 1rem;
+        border-top: 2px dashed rgba(244, 248, 252, 0.3);
+        font-family: var(--display);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 0.95rem;
+        color: var(--accent);
+      }
+
+      /* ---------- Testimonios ---------- */
+      .proofs {
+        padding: 100px 0;
+        background: var(--paper-2);
+      }
+      .proofs h2 {
+        max-width: 18ch;
+      }
+      .proof-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.8rem;
+        margin-top: 2.8rem;
+      }
+      .proof {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        background: #fff;
+        border: 2px solid var(--navy-deep);
+        border-radius: var(--radius);
+        padding: 1.7rem 1.5rem 1.4rem;
+        box-shadow: 6px 6px 0 var(--navy-deep);
+      }
+      .proof .stars {
+        color: var(--navy);
+        letter-spacing: 0.2em;
+        font-size: 1.05rem;
+      }
+      .proof blockquote {
+        flex: 1;
+        font-size: 1.02rem;
+        color: #2a3b55;
+      }
+      .proof .who {
+        font-family: var(--display);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--navy);
+      }
+      .proof .tag-ex {
+        position: absolute;
+        top: -13px;
+        right: 14px;
+        background: var(--accent);
+        color: var(--navy-deep);
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 0.15rem 0.65rem;
+        border-radius: 4px;
       }
 
       /* ---------- Pasos ---------- */
@@ -767,22 +964,22 @@
         left: -10%;
         right: -10%;
         top: 48px;
-        border-top: 6px dashed rgba(244, 240, 230, 0.12);
+        border-top: 6px dashed rgba(244, 248, 252, 0.12);
         transform: rotate(2deg);
       }
       .final h2 {
         color: var(--paper);
-        max-width: none;
+        max-width: 24ch;
         margin-inline: auto;
-        font-size: clamp(2.6rem, 7.5vw, 6rem);
+        font-size: clamp(2.2rem, 5vw, 4rem);
       }
       .final h2 em {
         font-style: normal;
-        color: var(--yellow);
+        color: var(--accent);
       }
       .final p {
         margin: 1.4rem auto 2.4rem;
-        max-width: 30rem;
+        max-width: 36rem;
         color: #b5c4da;
         font-size: 1.1rem;
       }
@@ -909,6 +1106,22 @@
         .ticket {
           transform: rotate(1.5deg);
         }
+        .fines .cam {
+          top: 0;
+          right: -70px;
+          width: 380px;
+          opacity: 0.22;
+        }
+        .about-grid,
+        .proof-grid {
+          grid-template-columns: 1fr;
+        }
+        .proof-grid {
+          gap: 2.2rem;
+        }
+        .about-card {
+          transform: rotate(-1deg);
+        }
       }
       @media (max-width: 520px) {
         .brand svg {
@@ -927,11 +1140,15 @@
           font-size: 0.95rem;
           letter-spacing: 0.1em;
         }
-        header.top .btn-wa span {
+        /* En celular ya está el botón flotante de WhatsApp: se libera lugar en el nav */
+        header.top .btn-wa {
           display: none;
         }
-        header.top .btn-wa {
-          padding: 0.6rem 0.8rem;
+        .nav-link .long {
+          display: none;
+        }
+        .nav-link .short {
+          display: inline;
         }
         .stamp.ok {
           font-size: 1.05rem;
@@ -946,6 +1163,14 @@
           padding: 0.9rem;
         }
         .svc .go {
+          display: none;
+        }
+        .pillars {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 400px) {
+        .brand-name small {
           display: none;
         }
       }
@@ -987,6 +1212,10 @@
         </a>
         <nav class="nav-right">
           <a class="nav-link" href="#tramites">Trámites</a>
+          <a class="nav-link" href="#nosotros"
+            ><span class="long">Quiénes somos</span
+            ><span class="short">Nosotros</span></a
+          >
           <a
             class="btn-wa sm ghost"
             data-wa="Hola, quiero hacer una consulta."
@@ -1122,7 +1351,7 @@
                   data-wa="Hola, quiero consultar por un cambio de uso o tipo."
                   href="https://wa.me/5491159697828"
                   ><span class="n">07</span
-                  ><span class="t">Cambio de uso / tipo</span
+                  ><span class="t">Altas y bajas Municipales</span
                   ><span class="go">Consultar →</span></a
                 >
                 <a
@@ -1184,6 +1413,23 @@
 
       <!-- INFRACCIONES -->
       <section class="fines" id="infracciones">
+        <!-- Cámara de calle de fondo (decorativa) -->
+        <svg class="cam" viewBox="0 0 460 560" fill="none" aria-hidden="true">
+          <path class="cone" d="M66 48 L-190 -20 M66 72 L-190 150" />
+          <rect x="372" y="120" width="20" height="428" />
+          <rect x="350" y="536" width="64" height="14" rx="3" />
+          <path d="M382 124 C382 84 346 60 300 60" stroke-width="11" />
+          <rect x="316" y="170" width="56" height="46" rx="8" />
+          <circle cx="344" cy="193" r="12" />
+          <g transform="rotate(-3 197 60)">
+            <rect x="90" y="22" width="214" height="76" rx="14" />
+            <path d="M92 20 H300 L286 6 H108 Z" />
+            <path d="M150 42 V78 M172 42 V78 M194 42 V78" stroke-width="3" />
+            <ellipse cx="90" cy="60" rx="14" ry="34" />
+            <ellipse cx="90" cy="60" rx="6" ry="16" />
+            <circle class="led" cx="270" cy="40" r="5" />
+          </g>
+        </svg>
         <div class="wrap">
           <div>
             <h2 class="rv">
@@ -1240,19 +1486,118 @@
         </div>
       </section>
 
+      <!-- QUIÉNES SOMOS -->
+      <section class="about" id="nosotros">
+        <div class="wrap about-grid">
+          <div>
+            <h2 class="rv">Quiénes somos</h2>
+            <p class="rv">
+              Somos Gestoría Automotor Efata, de Ezeiza, Buenos Aires. Hacemos
+              trámites registrales del automotor con experiencia, compromiso y
+              responsabilidad.
+            </p>
+            <p class="rv">
+              Nuestro objetivo es que cada cliente pueda hacer sus trámites de
+              forma fácil, segura y sin complicaciones.
+            </p>
+            <ul class="pillars rv">
+              <li>
+                <b>Atención personalizada</b>
+                <span>Cada trámite es único, como vos.</span>
+              </li>
+              <li>
+                <b>Consultas sin cargo</b>
+                <span>Te asesoramos sin compromiso.</span>
+              </li>
+              <li>
+                <b>Todo tipo de trámites</b>
+                <span>Te acompañamos en cada etapa.</span>
+              </li>
+              <li>
+                <b>Todo el país</b>
+                <span>Descuentos en infracciones de cualquier provincia.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="about-card rv">
+            <svg
+              viewBox="0 0 124 52"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M6 37c0-6 4-9 10-10l12-3c5-6 12-11 20-12 12-2 25-1 33 6l8 8 14 3c4 1 5 4 5 8"
+              />
+              <path d="M28 24c8-3 20-4 34-3" />
+              <path d="M6 37h13M44 37h38M105 37h9" />
+              <path d="M19 37a12 12 0 0 1 25 0M82 37a12 12 0 0 1 23 0" />
+            </svg>
+            <h3>Tu vehículo,<br />en buenas manos.</h3>
+            <span>Ezeiza · Buenos Aires</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIOS -->
+      <section class="proofs" id="testimonios">
+        <div class="wrap">
+          <h2 class="rv">Lo que dicen nuestros clientes</h2>
+          <!-- TESTIMONIOS DE EJEMPLO: reemplazar por opiniones reales (con permiso de cada cliente) antes de publicar -->
+          <div class="proof-grid">
+            <figure class="proof rv">
+              <span class="tag-ex">Ejemplo</span>
+              <div class="stars" aria-label="5 estrellas">★★★★★</div>
+              <blockquote>
+                “Excelente atención, súper responsables y siempre atentos a todo.
+                Los recomiendo.”
+              </blockquote>
+              <figcaption class="who">Nombre del cliente</figcaption>
+            </figure>
+            <figure class="proof rv">
+              <span class="tag-ex">Ejemplo</span>
+              <div class="stars" aria-label="5 estrellas">★★★★★</div>
+              <blockquote>
+                “Me resolvieron todo sin complicaciones. Muy profesionales.”
+              </blockquote>
+              <figcaption class="who">Nombre del cliente</figcaption>
+            </figure>
+            <figure class="proof rv">
+              <span class="tag-ex">Ejemplo</span>
+              <div class="stars" aria-label="5 estrellas">★★★★★</div>
+              <blockquote>
+                “La mejor gestoría, confiable y con muy buena predisposición.
+                ¡Gracias por todo!”
+              </blockquote>
+              <figcaption class="who">Nombre del cliente</figcaption>
+            </figure>
+          </div>
+          <p class="hint rv">
+            Testimonios de ejemplo: se reemplazan por opiniones reales de
+            clientes, con su permiso, antes de publicar.
+          </p>
+        </div>
+      </section>
+
       <!-- CTA FINAL -->
       <section class="final">
         <div class="wrap">
-          <h2 class="rv">Tu trámite, <em>en buenas manos</em></h2>
+          <h2 class="rv">
+            Tu tranquilidad empieza con una <em>buena gestión</em>
+          </h2>
           <p class="rv">
-            Una consulta no cuesta nada. Escribinos y arrancamos.
+            Te asesoramos y acompañamos en cada etapa de tus trámites
+            automotores, con claridad, compromiso y atención personalizada.
           </p>
           <a
             class="btn-wa rv"
-            data-wa="Hola, quiero hacer una consulta."
+            data-wa="Hola, quiero hablar de mi trámite."
             href="https://wa.me/5491159697828"
           >
-            <svg><use href="#wa" /></svg>Escribinos por WhatsApp
+            <svg><use href="#wa" /></svg>Hablemos de tu trámite
           </a>
           <a class="phone rv" href="https://wa.me/5491159697828"
             >11 5969 7828</a
@@ -1263,8 +1608,8 @@
 
     <footer>
       <div class="wrap">
-        <b>Gestoría Automotor Efata</b>
-        <span>Consultas sin cargo · WhatsApp 11 5969 7828</span>
+        <b>Gestoría Automotor Efata · Ezeiza, Buenos Aires</b>
+        <span>Atención personalizada</span>
       </div>
     </footer>
 
