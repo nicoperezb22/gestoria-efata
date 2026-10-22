@@ -898,6 +898,83 @@
         border-radius: 4px;
       }
 
+      /* ---------- Recupero en 24 hs ---------- */
+      .btn-wa.navy {
+        background: var(--navy);
+        color: var(--paper);
+        box-shadow:
+          0 8px 0 var(--navy-deep),
+          0 16px 30px rgba(0, 0, 0, 0.2);
+      }
+      .btn-wa.navy:hover {
+        box-shadow:
+          0 5px 0 var(--navy-deep),
+          0 10px 22px rgba(0, 0, 0, 0.2);
+      }
+      .btn-wa.navy:active {
+        box-shadow: 0 0 0 var(--navy-deep);
+      }
+      .express {
+        padding: 90px 0;
+        background: var(--paper-2);
+      }
+      .express-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        gap: 3.5rem;
+        align-items: center;
+      }
+      .express-badge {
+        position: relative;
+        width: min(300px, 70vw);
+        aspect-ratio: 1;
+        margin-inline: auto;
+        border-radius: 50%;
+        background: var(--navy);
+        color: var(--paper);
+        display: grid;
+        place-content: center;
+        text-align: center;
+        box-shadow: 10px 10px 0 var(--accent);
+      }
+      .express-badge::before {
+        content: "";
+        position: absolute;
+        inset: 14px;
+        border-radius: 50%;
+        border: 3px dashed rgba(244, 248, 252, 0.4);
+      }
+      .express-badge b {
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: clamp(5rem, 12vw, 8rem);
+        line-height: 0.8;
+      }
+      .express-badge span {
+        margin-top: 0.7rem;
+        font-family: var(--display);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        font-size: 1.3rem;
+        color: var(--accent);
+      }
+      .express .eyebrow {
+        color: var(--navy);
+      }
+      .express .eyebrow::before {
+        background: var(--navy);
+      }
+      .express h2 {
+        max-width: 16ch;
+      }
+      .express p {
+        margin: 1.2rem 0 2rem;
+        max-width: 30rem;
+        color: #3d4e66;
+        font-size: 1.1rem;
+      }
+
       /* ---------- Pasos ---------- */
       .steps {
         padding: 100px 0;
@@ -1113,8 +1190,12 @@
           opacity: 0.22;
         }
         .about-grid,
-        .proof-grid {
+        .proof-grid,
+        .express-grid {
           grid-template-columns: 1fr;
+        }
+        .express-grid {
+          gap: 2.4rem;
         }
         .proof-grid {
           gap: 2.2rem;
@@ -1410,6 +1491,17 @@
                   ><span class="t">Reposición de placa metálica</span
                   ><span class="go">Consultar →</span></a
                 >
+                <a
+                  class="svc"
+                  data-wa="Hola, quiero consultar por el recupero de CAT."
+                  href="https://wa.me/5491159697828"
+                  ><span class="n">14</span
+                  ><span class="t"
+                    >Recupero de CAT<small
+                      >Constancia de Asignación de Título</small
+                    ></span
+                  ><span class="go">Consultar →</span></a
+                >
               </div>
             </div>
           </div>
@@ -1464,6 +1556,31 @@
             <div class="foot">
               <span>Descuentos</span><span>Consultas sin cargo</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RECUPERO EN 24 HS -->
+      <!-- Texto mínimo a propósito: falta confirmar con ella qué cubre el "24 hs" y sus condiciones -->
+      <section class="express" id="recupero">
+        <div class="wrap express-grid">
+          <div class="express-badge rv" aria-hidden="true">
+            <b>24</b><span>hs</span>
+          </div>
+          <div>
+            <div class="eyebrow rv">Recuperación</div>
+            <h2 class="rv">Recupero de CAT en 24 hs</h2>
+            <p class="rv">
+              Recuperación de la Constancia de Asignación de Título (CAT).
+              Contanos tu caso por WhatsApp y te decimos cómo avanzar.
+            </p>
+            <a
+              class="btn-wa navy rv"
+              data-wa="Hola, quiero consultar por el recupero de CAT en 24 hs."
+              href="https://wa.me/5491159697828"
+            >
+              <svg><use href="#wa" /></svg>Consultar por el recupero
+            </a>
           </div>
         </div>
       </section>
