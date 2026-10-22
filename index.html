@@ -706,6 +706,53 @@
         flex-wrap: wrap;
       }
 
+      /* ---------- Foto de cámara + ticket (infracciones) ---------- */
+      .fines-visual {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+      .fines-photo {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        border: 6px solid var(--paper);
+        border-radius: 6px;
+        background: #000;
+        overflow: hidden;
+        transform: rotate(-1.8deg);
+        box-shadow: 0 18px 34px rgba(0, 0, 0, 0.4);
+      }
+      .fines-photo img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1000 / 440;
+        object-fit: cover;
+      }
+      .fines-photo figcaption {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: var(--navy-deep);
+        color: var(--paper);
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        padding: 0.3rem 0.9rem 0.25rem;
+        border-bottom-right-radius: 6px;
+      }
+      .fines-visual .ticket {
+        z-index: 2;
+        margin-top: -22px;
+      }
+      /* La foto reemplaza a la cámara dibujada (el SVG sigue en el HTML por si se vuelve atrás) */
+      .fines .cam {
+        display: none;
+      }
+
       /* ---------- Cámara de calle (fondo de infracciones) ---------- */
       .fines .cam {
         position: absolute;
@@ -1547,14 +1594,27 @@
               <svg><use href="#wa" /></svg>Consultar mi infracción
             </a>
           </div>
-          <div class="ticket rv" aria-hidden="true">
-            <div class="tk-top">
-              <span>Infracciones</span><span>Todo el país</span>
-            </div>
-            <div class="q">¿Tenés infracciones<br />de tránsito?</div>
-            <div class="big"><span>No pagues</span><br />demás</div>
-            <div class="foot">
-              <span>Descuentos</span><span>Consultas sin cargo</span>
+          <div class="fines-visual">
+            <!-- Foto: AITFFan1, Wikimedia Commons, CC0 (ver assets/CREDITOS.md) -->
+            <figure class="fines-photo">
+              <img
+                src="assets/camara-transito.jpg"
+                alt="Dos cámaras de control de tránsito montadas en un poste, de noche"
+                width="1000"
+                height="440"
+                loading="lazy"
+              />
+              <figcaption>Cámaras de tránsito</figcaption>
+            </figure>
+            <div class="ticket rv" aria-hidden="true">
+              <div class="tk-top">
+                <span>Infracciones</span><span>Todo el país</span>
+              </div>
+              <div class="q">¿Tenés infracciones<br />de tránsito?</div>
+              <div class="big"><span>No pagues</span><br />demás</div>
+              <div class="foot">
+                <span>Descuentos</span><span>Consultas sin cargo</span>
+              </div>
             </div>
           </div>
         </div>
