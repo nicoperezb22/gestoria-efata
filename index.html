@@ -200,6 +200,16 @@
         outline: 0;
       }
 
+      /* Logo de la clienta redibujado en SVG (claro, sobre el azul del header) */
+      .brand svg.brand-logo {
+        display: block;
+        width: auto;
+        height: 76px;
+        color: var(--paper);
+        overflow: visible;
+        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+      }
+
       /* ---------- Hero ---------- */
       .hero {
         position: relative;
@@ -243,7 +253,7 @@
         font-weight: 700;
         letter-spacing: 0.22em;
         text-transform: uppercase;
-        font-size: 1rem;
+        font-size: 2rem;
         color: var(--accent);
         display: flex;
         align-items: center;
@@ -255,6 +265,31 @@
         width: 38px;
         height: 3px;
         background: var(--accent);
+      }
+      /* Hero: "Gestoría del automotor" grande y con la barra arriba, como el diseño de la clienta */
+      .hero .eyebrow {
+        display: block;
+        font-size: clamp(2.1rem, 5vw, 3.3rem);
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        line-height: 0.98;
+        margin-bottom: 1.2rem;
+      }
+      .hero .eyebrow::before {
+        display: block;
+        width: 76px;
+        height: 4px;
+        margin-bottom: 1rem;
+      }
+      /* Botón del hero: blanco con ícono verde y flecha */
+      .btn-wa.wa-icon svg {
+        color: var(--wa);
+      }
+      .btn-wa.arrow::after {
+        content: "→";
+        margin-left: 0.5rem;
+        font-weight: 600;
+        color: var(--navy-mid);
       }
       h1 {
         font-family: var(--display);
@@ -606,49 +641,121 @@
 
       /* ---------- Infracciones ---------- */
       .fines {
-        background: var(--navy);
-        padding: 100px 0;
-        overflow: hidden;
+        background: var(--navy-deep);
         color: var(--paper);
+        overflow: hidden;
+        padding: 0 0 90px;
       }
-      .fines::before {
+      /* franjas diagonales en las esquinas (como en el diseño de la clienta) */
+      .fines::before,
+      .fines::after {
         content: "";
         position: absolute;
-        inset: 0;
-        background: repeating-linear-gradient(
-          -45deg,
-          transparent 0 22px,
-          rgba(255, 255, 255, 0.035) 22px 44px
+        width: 170px;
+        height: 170px;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(
+          135deg,
+          transparent 0 20%,
+          #fff 20% 30%,
+          transparent 30% 37%,
+          var(--accent) 37% 43%,
+          transparent 43%
         );
+      }
+      .fines::before {
+        top: 0;
+        left: 0;
+      }
+      .fines::after {
+        right: 0;
+        bottom: 0;
+        transform: rotate(180deg);
       }
       .fines .wrap {
         position: relative;
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 3.5rem;
-        align-items: center;
+      }
+
+      /* bloque superior: texto + foto de la cámara de fondo */
+      .fines-top {
+        position: relative;
+        overflow: hidden;
+        padding: 120px 0 130px;
+      }
+      .fines-mobile {
+        display: none;
+      }
+      .fines-photo-bg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        /* La cámara ocupa un poco más de la mitad del ancho, pegada al borde derecho, con la
+           visera completa. Borde recto y nítido: sin degradés, difuminados ni recortes en diagonal. */
+        width: min(58%, 720px);
+        aspect-ratio: 924 / 1576;
+        /* cover = nunca se estira ni deforma; con el aspect-ratio de la imagen, no recorta nada */
+        background: url("assets/camara-fondo.jpg") center top / cover no-repeat;
+      }
+      .fines-copy {
+        position: relative;
+        z-index: 2;
       }
       .fines h2 {
         color: var(--paper);
-        max-width: 12ch;
+        max-width: 14ch;
+        font-size: clamp(2.8rem, 7vw, 5rem);
       }
       .fines h2 em {
         font-style: normal;
         color: var(--accent);
       }
+      .fines .rule {
+        display: block;
+        width: 96px;
+        height: 4px;
+        margin-top: 1.5rem;
+        background: var(--accent);
+      }
       .fines p {
-        margin: 1.3rem 0 2rem;
-        max-width: 30rem;
-        color: #cdd9ea;
-        font-size: 1.1rem;
+        margin: 1.4rem 0 2rem;
+        max-width: 28rem;
+        color: #e2eaf5;
+        font-size: 1.12rem;
+      }
+      /* curva celeste que separa la foto del ticket */
+      .fines-swoosh {
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 100%;
+        height: 110px;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .fines-swoosh .fill {
+        fill: var(--navy-deep);
+      }
+      .fines-swoosh .line {
+        fill: none;
+        stroke: var(--accent);
+        stroke-width: 7;
+        vector-effect: non-scaling-stroke;
       }
 
+      /* ticket */
+      .fines-ticket {
+        position: relative;
+        z-index: 3;
+        margin-top: -34px;
+      }
       .ticket {
         position: relative;
-        background: var(--accent);
+        max-width: 780px;
+        margin-inline: auto;
+        background: #c6e3fb;
         color: var(--navy-deep);
-        padding: 2rem 2rem 2.2rem;
-        transform: rotate(2.5deg);
+        padding: 2rem 2rem 2.6rem;
         border-radius: 6px;
         --m:
           radial-gradient(circle 13px at 0 50%, #0000 98%, #000) left/51% 40px
@@ -683,7 +790,7 @@
         text-transform: uppercase;
         line-height: 0.88;
         font-size: clamp(3.2rem, 8vw, 5.4rem);
-        margin: 0.4rem 0 1rem;
+        margin: 0.4rem 0 1.6rem;
       }
       .ticket .big span {
         background: var(--navy-deep);
@@ -692,59 +799,42 @@
         display: inline-block;
         transform: skewX(-6deg);
       }
-      .ticket .foot {
-        font-family: var(--display);
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        font-size: 1.15rem;
+      .ticket .tk-end {
+        position: relative;
         border-top: 2px dashed rgba(10, 35, 71, 0.45);
-        padding-top: 0.9rem;
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        flex-wrap: wrap;
       }
-
-      /* ---------- Cámara de calle (fondo de infracciones) ---------- */
-      .fines .cam {
+      .ticket .tk-end::before {
+        content: "";
         position: absolute;
-        top: 8px;
-        right: 1%;
-        width: min(600px, 58vw);
-        height: auto;
-        overflow: visible;
-        color: var(--paper);
-        opacity: 0.34;
-        pointer-events: none;
-        stroke: currentColor;
-        stroke-width: 5;
-        stroke-linejoin: round;
-        stroke-linecap: round;
+        left: 50%;
+        top: -4px;
+        width: 34%;
+        height: 6px;
+        border-radius: 3px;
+        background: var(--accent);
+        transform: translateX(-50%);
       }
-      .cam rect,
-      .cam ellipse {
-        fill: var(--navy);
+      .ticket .tk-wa {
+        position: absolute;
+        right: 28px;
+        bottom: 26px;
+        width: 78px;
+        height: 78px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--wa);
+        color: #fff;
+        border: 5px solid #fff;
+        box-shadow: 0 8px 18px rgba(10, 35, 71, 0.3);
+        transition: transform 0.15s;
       }
-      .cam .cone {
-        stroke: var(--accent);
-        stroke-width: 3;
-        stroke-dasharray: 6 12;
+      .ticket .tk-wa:hover {
+        transform: scale(1.06);
       }
-      .cam .led {
-        fill: var(--accent);
-        stroke: none;
-        animation: blink 2.2s steps(1) infinite;
-      }
-      @keyframes blink {
-        50% {
-          opacity: 0.15;
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .cam .led {
-          animation: none;
-        }
+      .ticket .tk-wa svg {
+        width: 40px;
+        height: 40px;
       }
 
       /* ---------- Quiénes somos ---------- */
@@ -766,6 +856,15 @@
         color: #3d4e66;
         font-size: 1.08rem;
         max-width: 34rem;
+      }
+      .about .about-sub {
+        margin: -0.6rem 0 1.4rem;
+        font-family: var(--display);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 1.1rem;
+        color: var(--navy-mid);
       }
       .about p + p {
         margin-top: 1rem;
@@ -817,7 +916,7 @@
         box-shadow: 9px 9px 0 var(--accent);
       }
       .about-card svg {
-        width: 120px;
+        width: 190px;
         height: auto;
         margin-bottom: 1.2rem;
       }
@@ -1162,9 +1261,21 @@
         .hero {
           padding: 130px 0 90px;
         }
-        .hero-grid,
-        .fines .wrap {
+        .hero-grid {
           grid-template-columns: 1fr;
+        }
+        .fines-top {
+          padding: 100px 0 120px;
+        }
+        /* pantallas medianas (641-900): foto más angosta y texto más corto, para que no se toquen */
+        .fines-photo-bg {
+          width: 50%;
+        }
+        .fines h2 {
+          font-size: clamp(2.4rem, 6vw, 4rem);
+        }
+        .fines p {
+          max-width: 19rem;
         }
         .plate-stage {
           min-height: 280px;
@@ -1179,15 +1290,6 @@
         }
         .step:not(:last-child)::after {
           display: none;
-        }
-        .ticket {
-          transform: rotate(1.5deg);
-        }
-        .fines .cam {
-          top: 0;
-          right: -70px;
-          width: 380px;
-          opacity: 0.22;
         }
         .about-grid,
         .proof-grid,
@@ -1207,6 +1309,10 @@
       @media (max-width: 520px) {
         .brand svg {
           width: 50px;
+        }
+        .brand svg.brand-logo {
+          width: auto;
+          height: 56px;
         }
         .brand-name b {
           font-size: 1.5rem;
@@ -1249,10 +1355,175 @@
         .pillars {
           grid-template-columns: 1fr;
         }
+        .hero-cta .btn-wa {
+          width: 100%;
+          justify-content: center;
+        }
+        .fines-top {
+          padding: 90px 0 100px;
+        }
+        .fines-photo-bg {
+          width: 62%;
+        }
+        .fines h2 {
+          font-size: 2.4rem;
+        }
+        .fines .rule {
+          margin-top: 1.1rem;
+        }
+        .fines p {
+          max-width: 16.5rem;
+          margin: 1.1rem 0 1.5rem;
+          font-size: 1rem;
+          text-shadow: 0 1px 8px rgba(10, 35, 71, 0.9);
+        }
+        .ticket {
+          padding: 1.6rem 1.4rem 2.2rem;
+        }
+        .ticket .tk-wa {
+          width: 62px;
+          height: 62px;
+          right: 20px;
+          bottom: 22px;
+          border-width: 4px;
+        }
+        .ticket .tk-wa svg {
+          width: 32px;
+          height: 32px;
+        }
       }
       @media (max-width: 400px) {
         .brand-name small {
           display: none;
+        }
+      }
+      /* ---------- Infracciones en celular: idéntico al diseño de la clienta (assets/camara-section.jpeg) ----------
+         En celular la sección ES esa imagen. El texto real sigue en el HTML (oculto a la vista, para buscadores y
+         lectores de pantalla) y los dos botones son links reales, invisibles, puestos encima de los de la imagen. */
+      @media (max-width: 640px) {
+        /* La imagen (en flujo) define el alto de la sección: se ajusta a cualquier ancho
+           manteniendo su proporción, sin estirarse. */
+        .fines {
+          position: relative;
+          padding: 0;
+          overflow: hidden;
+          background: var(--navy-deep);
+        }
+        .fines-mobile {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+        .fines::before,
+        .fines::after,
+        .fines .fines-photo-bg,
+        .fines .fines-swoosh,
+        .fines .ticket .tk-body {
+          display: none;
+        }
+        /* Los dos frentes se vuelven capas que cubren la imagen; solo los botones reciben toques */
+        .fines .fines-top,
+        .fines .fines-ticket {
+          position: absolute;
+          inset: 0;
+          padding: 0;
+          margin: 0;
+          z-index: 2;
+          pointer-events: none;
+        }
+        .fines .wrap,
+        .fines .fines-copy,
+        .fines .ticket {
+          position: static;
+          padding: 0;
+          margin: 0;
+          max-width: none;
+          background: none;
+          box-shadow: none;
+          filter: none;
+          -webkit-mask: none;
+          mask: none;
+        }
+        .fines .rv {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        /* Texto real, oculto a la vista pero legible por buscadores y lectores de pantalla */
+        .fines .fines-copy h2,
+        .fines .fines-copy p,
+        .fines .fines-copy .rule {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: 0;
+          border: 0;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+        }
+        /* Botones: links reales e invisibles sobre los de la imagen, con animación al tocar */
+        .fines .fines-copy .btn-wa,
+        .fines .ticket .tk-wa {
+          position: absolute;
+          display: block;
+          margin: 0;
+          padding: 0;
+          border: 0;
+          color: transparent;
+          background: transparent;
+          box-shadow: none;
+          pointer-events: auto;
+          -webkit-tap-highlight-color: transparent;
+          transition: transform 0.12s ease, background 0.12s ease;
+        }
+        .fines .fines-copy .btn-wa svg,
+        .fines .ticket .tk-wa svg {
+          opacity: 0;
+        }
+        .fines .fines-copy .btn-wa {
+          left: 5.4%;
+          top: 52.4%;
+          width: 59.6%;
+          height: 7.8%;
+          border-radius: 999px;
+        }
+        .fines .ticket .tk-wa {
+          left: 78.3%;
+          top: 84.6%;
+          width: 14.8%;
+          height: 9.9%;
+          right: auto;
+          bottom: auto;
+          border-radius: 50%;
+        }
+        /* feedback al presionar el botón blanco: destello y leve hundido */
+        .fines .fines-copy .btn-wa:active {
+          background: rgba(255, 255, 255, 0.3);
+          transform: scale(0.97);
+        }
+        /* el círculo de WhatsApp late para señalar que es tocable, y responde al toque */
+        .fines .ticket .tk-wa::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          border: 3px solid var(--wa);
+          animation: ping 2.4s ease-out infinite;
+        }
+        .fines .ticket .tk-wa:active {
+          transform: scale(0.9);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .fines .ticket .tk-wa::after {
+            animation: none;
+          }
+        }
+        .fines .fines-copy .btn-wa:focus-visible,
+        .fines .ticket .tk-wa:focus-visible {
+          outline: 3px solid #fff;
+          outline-offset: 2px;
         }
       }
     </style>
@@ -1266,30 +1537,81 @@
           d="M16.04 3C9.4 3 4.02 8.37 4.02 15c0 2.12.55 4.18 1.6 6L4 28l7.17-1.88A12 12 0 0 0 16.04 27C22.67 27 28.05 21.63 28.05 15S22.67 3 16.04 3Zm0 21.9c-1.78 0-3.52-.48-5.04-1.38l-.36-.21-3.8 1 1.02-3.7-.24-.38A9.86 9.86 0 0 1 6.1 15c0-5.46 4.46-9.9 9.94-9.9 5.47 0 9.93 4.44 9.93 9.9s-4.46 9.9-9.93 9.9Zm5.45-7.4c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.24-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.53.08-.8.38-.28.3-1.06 1.03-1.06 2.5s1.08 2.9 1.23 3.1c.15.2 2.13 3.24 5.15 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"
         />
       </symbol>
+      <!-- Auto del logo de Efata (lo usan el header y Quiénes somos) -->
+      <symbol id="car-mark" viewBox="0 0 740 230">
+        <g fill="currentColor">
+          <!-- techo sólido con un aro fino alrededor del parabrisas -->
+          <path
+            fill-rule="evenodd"
+            d="M105 127C112 95 128 62 160 40C200 14 280 8 370 8C470 8 545 16 575 40C600 62 612 95 620 127Z
+                   M142 118C148 92 160 72 180 58C232 38 330 34 372 34C440 34 520 38 558 58C578 72 590 92 596 118C500 110 250 110 142 118Z
+                   M156 112C161 94 171 80 188 68C236 50 330 46 372 46C440 46 516 50 552 68C569 80 579 94 584 112C500 104 250 104 156 112Z"
+          />
+          <!-- espejos -->
+          <path
+            d="M24 100C24 92 40 88 62 90C80 91 94 97 96 108L96 128L70 132C46 130 28 116 24 100Z"
+          />
+          <path
+            transform="translate(725 0) scale(-1 1)"
+            d="M24 100C24 92 40 88 62 90C80 91 94 97 96 108L96 128L70 132C46 130 28 116 24 100Z"
+          />
+          <!-- curvas de la carrocería -->
+          <path
+            d="M4 204C70 162 170 132 330 125C450 121 560 124 612 129C520 134 420 139 300 152C200 164 100 190 4 204Z"
+          />
+          <path
+            d="M130 172C230 152 330 140 440 132C470 130 482 131 484 132C400 140 300 158 130 172Z"
+          />
+          <path
+            d="M415 162C470 149 540 143 600 141C660 139 702 152 722 180C728 192 732 202 734 212C710 194 684 182 650 178C590 174 500 180 415 162Z"
+          />
+        </g>
+      </symbol>
     </svg>
 
     <header class="top">
       <div class="wrap">
-        <a class="brand" href="#" aria-label="Gestoría Automotor Efata">
+        <a
+          class="brand"
+          href="#"
+          aria-label="Gestoría Automotor Efata, ir al inicio"
+        >
           <svg
-            viewBox="0 0 124 52"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3.2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
+            class="brand-logo"
+            viewBox="0 0 740 450"
+            role="img"
+            aria-label="Efata Gestoría Automotor"
           >
-            <path
-              d="M6 37c0-6 4-9 10-10l12-3c5-6 12-11 20-12 12-2 25-1 33 6l8 8 14 3c4 1 5 4 5 8"
-            />
-            <path d="M28 24c8-3 20-4 34-3" />
-            <path d="M6 37h13M44 37h38M105 37h9" />
-            <path d="M19 37a12 12 0 0 1 25 0M82 37a12 12 0 0 1 23 0" />
+            <use href="#car-mark" width="740" height="230" />
+            <!-- nombre -->
+            <text
+              x="370"
+              y="354"
+              text-anchor="middle"
+              fill="currentColor"
+              font-family="Barlow Condensed, sans-serif"
+              font-weight="800"
+              font-size="146"
+              textLength="670"
+              lengthAdjust="spacingAndGlyphs"
+            >
+              EFATA
+            </text>
+            <rect x="30" y="368" width="680" height="6" fill="currentColor" />
+            <text
+              x="370"
+              y="436"
+              text-anchor="middle"
+              fill="currentColor"
+              font-family="Plus Jakarta Sans, sans-serif"
+              font-weight="600"
+              font-size="56"
+              textLength="660"
+              lengthAdjust="spacingAndGlyphs"
+            >
+              GESTORÍA AUTOMOTOR
+            </text>
           </svg>
-          <span class="brand-name"
-            ><small>Gestoría Automotor</small><b>Efata</b></span
-          >
         </a>
         <nav class="nav-right">
           <a class="nav-link" href="#tramites">Trámites</a>
@@ -1323,7 +1645,7 @@
             </p>
             <div class="hero-cta rv">
               <a
-                class="btn-wa"
+                class="btn-wa paper wa-icon arrow"
                 data-wa="Hola, quiero hacer una consulta."
                 href="https://wa.me/5491159697828"
               >
@@ -1513,28 +1835,21 @@
 
       <!-- INFRACCIONES -->
       <section class="fines" id="infracciones">
-        <!-- Cámara de calle de fondo (decorativa) -->
-        <svg class="cam" viewBox="0 0 460 560" fill="none" aria-hidden="true">
-          <path class="cone" d="M66 48 L-190 -20 M66 72 L-190 150" />
-          <rect x="372" y="120" width="20" height="428" />
-          <rect x="350" y="536" width="64" height="14" rx="3" />
-          <path d="M382 124 C382 84 346 60 300 60" stroke-width="11" />
-          <rect x="316" y="170" width="56" height="46" rx="8" />
-          <circle cx="344" cy="193" r="12" />
-          <g transform="rotate(-3 197 60)">
-            <rect x="90" y="22" width="214" height="76" rx="14" />
-            <path d="M92 20 H300 L286 6 H108 Z" />
-            <path d="M150 42 V78 M172 42 V78 M194 42 V78" stroke-width="3" />
-            <ellipse cx="90" cy="60" rx="14" ry="34" />
-            <ellipse cx="90" cy="60" rx="6" ry="16" />
-            <circle class="led" cx="270" cy="40" r="5" />
-          </g>
-        </svg>
-        <div class="wrap">
-          <div>
+        <!-- Celular: la imagen del diseño tal cual, responsive (define el alto de la sección) -->
+        <img
+          class="fines-mobile"
+          src="assets/camara-section.jpeg"
+          alt=""
+          aria-hidden="true"
+        />
+        <div class="fines-top">
+          <!-- Cámara de fondo: recorte del diseño de la clienta (assets/camara-section.jpeg) -->
+          <div class="fines-photo-bg" aria-hidden="true"></div>
+          <div class="wrap fines-copy">
             <h2 class="rv">
-              Infracciones de tránsito: <em>no pagues demás</em>
+              Infracciones<br />de tránsito:<br /><em>no pagues<br />demás</em>
             </h2>
+            <span class="rule" aria-hidden="true"></span>
             <p class="rv">
               Realizamos descuentos en infracciones de todo el país. Mandanos tu
               consulta y te contamos qué se puede hacer, sin compromiso.
@@ -1547,15 +1862,37 @@
               <svg><use href="#wa" /></svg>Consultar mi infracción
             </a>
           </div>
-          <div class="ticket rv" aria-hidden="true">
-            <div class="tk-top">
-              <span>Infracciones</span><span>Todo el país</span>
+          <svg
+            class="fines-swoosh"
+            viewBox="0 0 1000 100"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              class="fill"
+              d="M0 100 L420 100 C640 96 850 62 1000 0 L1000 100 Z"
+            />
+            <path class="line" d="M420 100 C640 96 850 62 1000 0" />
+          </svg>
+        </div>
+        <div class="wrap fines-ticket">
+          <div class="ticket rv">
+            <div class="tk-body" aria-hidden="true">
+              <div class="tk-top">
+                <span>Infracciones</span><span>Todo el país</span>
+              </div>
+              <div class="q">¿Tenés infracciones<br />de tránsito?</div>
+              <div class="big"><span>No pagues</span><br />demás</div>
+              <div class="tk-end"></div>
             </div>
-            <div class="q">¿Tenés infracciones<br />de tránsito?</div>
-            <div class="big"><span>No pagues</span><br />demás</div>
-            <div class="foot">
-              <span>Descuentos</span><span>Consultas sin cargo</span>
-            </div>
+            <a
+              class="tk-wa"
+              data-wa="Hola, tengo infracciones de tránsito y quiero consultar por un descuento."
+              href="https://wa.me/5491159697828"
+              aria-label="Consultar mi infracción por WhatsApp"
+            >
+              <svg><use href="#wa" /></svg>
+            </a>
           </div>
         </div>
       </section>
@@ -1616,14 +1953,21 @@
         <div class="wrap about-grid">
           <div>
             <h2 class="rv">Quiénes somos</h2>
+            <p class="about-sub rv">Gestoría Automotor Efata</p>
             <p class="rv">
-              Somos Gestoría Automotor Efata, de Ezeiza, Buenos Aires. Hacemos
-              trámites registrales del automotor con experiencia, compromiso y
+              En Gestoría Automotor Efata te acompañamos en tus trámites
+              automotores con atención personalizada, compromiso y
               responsabilidad.
             </p>
             <p class="rv">
-              Nuestro objetivo es que cada cliente pueda hacer sus trámites de
-              forma fácil, segura y sin complicaciones.
+              Estamos en Ezeiza, Buenos Aires, y trabajamos en todo el país,
+              brindando asesoramiento claro y soluciones para tus trámites
+              registrales.
+            </p>
+            <p class="rv">
+              Nuestro compromiso es acompañarte en cada etapa para que puedas
+              resolver tus trámites de manera simple, segura y sin
+              complicaciones.
             </p>
             <ul class="pillars rv">
               <li>
@@ -1645,23 +1989,10 @@
             </ul>
           </div>
           <div class="about-card rv">
-            <svg
-              viewBox="0 0 124 52"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="3.2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path
-                d="M6 37c0-6 4-9 10-10l12-3c5-6 12-11 20-12 12-2 25-1 33 6l8 8 14 3c4 1 5 4 5 8"
-              />
-              <path d="M28 24c8-3 20-4 34-3" />
-              <path d="M6 37h13M44 37h38M105 37h9" />
-              <path d="M19 37a12 12 0 0 1 25 0M82 37a12 12 0 0 1 23 0" />
+            <svg class="about-logo" viewBox="0 0 740 230" aria-hidden="true">
+              <use href="#car-mark" width="740" height="230" />
             </svg>
-            <h3>Tu vehículo,<br />en buenas manos.</h3>
+            <h3>Tu trámite,<br />en buenas manos.</h3>
             <span>Ezeiza · Buenos Aires</span>
           </div>
         </div>
@@ -1677,8 +2008,8 @@
               <span class="tag-ex">Ejemplo</span>
               <div class="stars" aria-label="5 estrellas">★★★★★</div>
               <blockquote>
-                “Excelente atención, súper responsables y siempre atentos a todo.
-                Los recomiendo.”
+                “Excelente atención, súper responsables y siempre atentos a
+                todo. Los recomiendo.”
               </blockquote>
               <figcaption class="who">Nombre del cliente</figcaption>
             </figure>
