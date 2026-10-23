@@ -243,7 +243,7 @@
         font-weight: 700;
         letter-spacing: 0.22em;
         text-transform: uppercase;
-        font-size: 1rem;
+        font-size: 2rem;
         color: var(--accent);
         display: flex;
         align-items: center;
@@ -255,6 +255,31 @@
         width: 38px;
         height: 3px;
         background: var(--accent);
+      }
+      /* Hero: "Gestoría del automotor" grande y con la barra arriba, como el diseño de la clienta */
+      .hero .eyebrow {
+        display: block;
+        font-size: clamp(2.1rem, 5vw, 3.3rem);
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        line-height: 0.98;
+        margin-bottom: 1.2rem;
+      }
+      .hero .eyebrow::before {
+        display: block;
+        width: 76px;
+        height: 4px;
+        margin-bottom: 1rem;
+      }
+      /* Botón del hero: blanco con ícono verde y flecha */
+      .btn-wa.wa-icon svg {
+        color: var(--wa);
+      }
+      .btn-wa.arrow::after {
+        content: "→";
+        margin-left: 0.5rem;
+        font-weight: 600;
+        color: var(--navy-mid);
       }
       h1 {
         font-family: var(--display);
@@ -606,49 +631,124 @@
 
       /* ---------- Infracciones ---------- */
       .fines {
-        background: var(--navy);
-        padding: 100px 0;
-        overflow: hidden;
+        background: var(--navy-deep);
         color: var(--paper);
+        overflow: hidden;
+        padding: 0 0 90px;
       }
-      .fines::before {
+      /* franjas diagonales en las esquinas (como en el diseño de la clienta) */
+      .fines::before,
+      .fines::after {
         content: "";
         position: absolute;
-        inset: 0;
-        background: repeating-linear-gradient(
-          -45deg,
-          transparent 0 22px,
-          rgba(255, 255, 255, 0.035) 22px 44px
+        width: 170px;
+        height: 170px;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(
+          135deg,
+          transparent 0 20%,
+          #fff 20% 30%,
+          transparent 30% 37%,
+          var(--accent) 37% 43%,
+          transparent 43%
         );
+      }
+      .fines::before {
+        top: 0;
+        left: 0;
+      }
+      .fines::after {
+        right: 0;
+        bottom: 0;
+        transform: rotate(180deg);
       }
       .fines .wrap {
         position: relative;
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 3.5rem;
-        align-items: center;
+      }
+
+      /* bloque superior: texto + foto de la cámara de fondo */
+      .fines-top {
+        position: relative;
+        padding: 120px 0 130px;
+      }
+      .fines-photo-bg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(62%, 780px);
+        background:
+          linear-gradient(90deg, rgba(10, 35, 71, 0.92), rgba(10, 35, 71, 0) 72%),
+          url("assets/camara-fondo.jpg") 45% 10% / cover no-repeat;
+        -webkit-mask-image:
+          linear-gradient(to right, transparent 0%, #000 50%),
+          linear-gradient(to bottom, #000 80%, transparent 100%);
+        -webkit-mask-composite: source-in;
+        mask-image:
+          linear-gradient(to right, transparent 0%, #000 50%),
+          linear-gradient(to bottom, #000 80%, transparent 100%);
+        mask-composite: intersect;
+      }
+      .fines-copy {
+        position: relative;
+        z-index: 2;
       }
       .fines h2 {
         color: var(--paper);
-        max-width: 12ch;
+        max-width: 14ch;
+        font-size: clamp(2.8rem, 7vw, 5rem);
       }
       .fines h2 em {
         font-style: normal;
         color: var(--accent);
       }
+      .fines .rule {
+        display: block;
+        width: 96px;
+        height: 4px;
+        margin-top: 1.5rem;
+        background: var(--accent);
+      }
       .fines p {
-        margin: 1.3rem 0 2rem;
-        max-width: 30rem;
-        color: #cdd9ea;
-        font-size: 1.1rem;
+        margin: 1.4rem 0 2rem;
+        max-width: 28rem;
+        color: #e2eaf5;
+        font-size: 1.12rem;
+      }
+      /* curva celeste que separa la foto del ticket */
+      .fines-swoosh {
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 100%;
+        height: 110px;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .fines-swoosh .fill {
+        fill: var(--navy-deep);
+      }
+      .fines-swoosh .line {
+        fill: none;
+        stroke: var(--accent);
+        stroke-width: 7;
+        vector-effect: non-scaling-stroke;
       }
 
+      /* ticket */
+      .fines-ticket {
+        position: relative;
+        z-index: 3;
+        margin-top: -34px;
+      }
       .ticket {
         position: relative;
-        background: var(--accent);
+        max-width: 780px;
+        margin-inline: auto;
+        background: #c6e3fb;
         color: var(--navy-deep);
-        padding: 2rem 2rem 2.2rem;
-        transform: rotate(2.5deg);
+        padding: 2rem 2rem 2.6rem;
         border-radius: 6px;
         --m:
           radial-gradient(circle 13px at 0 50%, #0000 98%, #000) left/51% 40px
@@ -683,7 +783,7 @@
         text-transform: uppercase;
         line-height: 0.88;
         font-size: clamp(3.2rem, 8vw, 5.4rem);
-        margin: 0.4rem 0 1rem;
+        margin: 0.4rem 0 1.6rem;
       }
       .ticket .big span {
         background: var(--navy-deep);
@@ -692,106 +792,42 @@
         display: inline-block;
         transform: skewX(-6deg);
       }
-      .ticket .foot {
-        font-family: var(--display);
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        font-size: 1.15rem;
+      .ticket .tk-end {
+        position: relative;
         border-top: 2px dashed rgba(10, 35, 71, 0.45);
-        padding-top: 0.9rem;
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        flex-wrap: wrap;
       }
-
-      /* ---------- Foto de cámara + ticket (infracciones) ---------- */
-      .fines-visual {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-      }
-      .fines-photo {
-        position: relative;
-        z-index: 1;
-        margin: 0;
-        border: 6px solid var(--paper);
-        border-radius: 6px;
-        background: #000;
-        overflow: hidden;
-        transform: rotate(-1.8deg);
-        box-shadow: 0 18px 34px rgba(0, 0, 0, 0.4);
-      }
-      .fines-photo img {
-        display: block;
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1000 / 440;
-        object-fit: cover;
-      }
-      .fines-photo figcaption {
+      .ticket .tk-end::before {
+        content: "";
         position: absolute;
-        left: 0;
-        top: 0;
-        background: var(--navy-deep);
-        color: var(--paper);
-        font-family: var(--display);
-        font-weight: 700;
-        font-size: 0.85rem;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        padding: 0.3rem 0.9rem 0.25rem;
-        border-bottom-right-radius: 6px;
+        left: 50%;
+        top: -4px;
+        width: 34%;
+        height: 6px;
+        border-radius: 3px;
+        background: var(--accent);
+        transform: translateX(-50%);
       }
-      .fines-visual .ticket {
-        z-index: 2;
-        margin-top: -22px;
-      }
-      /* La foto reemplaza a la cámara dibujada (el SVG sigue en el HTML por si se vuelve atrás) */
-      .fines .cam {
-        display: none;
-      }
-
-      /* ---------- Cámara de calle (fondo de infracciones) ---------- */
-      .fines .cam {
+      .ticket .tk-wa {
         position: absolute;
-        top: 8px;
-        right: 1%;
-        width: min(600px, 58vw);
-        height: auto;
-        overflow: visible;
-        color: var(--paper);
-        opacity: 0.34;
-        pointer-events: none;
-        stroke: currentColor;
-        stroke-width: 5;
-        stroke-linejoin: round;
-        stroke-linecap: round;
+        right: 28px;
+        bottom: 26px;
+        width: 78px;
+        height: 78px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--wa);
+        color: #fff;
+        border: 5px solid #fff;
+        box-shadow: 0 8px 18px rgba(10, 35, 71, 0.3);
+        transition: transform 0.15s;
       }
-      .cam rect,
-      .cam ellipse {
-        fill: var(--navy);
+      .ticket .tk-wa:hover {
+        transform: scale(1.06);
       }
-      .cam .cone {
-        stroke: var(--accent);
-        stroke-width: 3;
-        stroke-dasharray: 6 12;
-      }
-      .cam .led {
-        fill: var(--accent);
-        stroke: none;
-        animation: blink 2.2s steps(1) infinite;
-      }
-      @keyframes blink {
-        50% {
-          opacity: 0.15;
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .cam .led {
-          animation: none;
-        }
+      .ticket .tk-wa svg {
+        width: 40px;
+        height: 40px;
       }
 
       /* ---------- Quiénes somos ---------- */
@@ -813,6 +849,15 @@
         color: #3d4e66;
         font-size: 1.08rem;
         max-width: 34rem;
+      }
+      .about .about-sub {
+        margin: -0.6rem 0 1.4rem;
+        font-family: var(--display);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 1.1rem;
+        color: var(--navy-mid);
       }
       .about p + p {
         margin-top: 1rem;
@@ -1209,9 +1254,14 @@
         .hero {
           padding: 130px 0 90px;
         }
-        .hero-grid,
-        .fines .wrap {
+        .hero-grid {
           grid-template-columns: 1fr;
+        }
+        .fines-top {
+          padding: 100px 0 120px;
+        }
+        .fines-photo-bg {
+          width: 82%;
         }
         .plate-stage {
           min-height: 280px;
@@ -1226,15 +1276,6 @@
         }
         .step:not(:last-child)::after {
           display: none;
-        }
-        .ticket {
-          transform: rotate(1.5deg);
-        }
-        .fines .cam {
-          top: 0;
-          right: -70px;
-          width: 380px;
-          opacity: 0.22;
         }
         .about-grid,
         .proof-grid,
@@ -1295,6 +1336,30 @@
         }
         .pillars {
           grid-template-columns: 1fr;
+        }
+        .hero-cta .btn-wa {
+          width: 100%;
+          justify-content: center;
+        }
+        .fines-photo-bg {
+          width: 88%;
+        }
+        .fines p {
+          max-width: 17.5rem;
+        }
+        .ticket {
+          padding: 1.6rem 1.4rem 2.2rem;
+        }
+        .ticket .tk-wa {
+          width: 62px;
+          height: 62px;
+          right: 20px;
+          bottom: 22px;
+          border-width: 4px;
+        }
+        .ticket .tk-wa svg {
+          width: 32px;
+          height: 32px;
         }
       }
       @media (max-width: 400px) {
@@ -1370,7 +1435,7 @@
             </p>
             <div class="hero-cta rv">
               <a
-                class="btn-wa"
+                class="btn-wa paper wa-icon arrow"
                 data-wa="Hola, quiero hacer una consulta."
                 href="https://wa.me/5491159697828"
               >
@@ -1560,28 +1625,14 @@
 
       <!-- INFRACCIONES -->
       <section class="fines" id="infracciones">
-        <!-- Cámara de calle de fondo (decorativa) -->
-        <svg class="cam" viewBox="0 0 460 560" fill="none" aria-hidden="true">
-          <path class="cone" d="M66 48 L-190 -20 M66 72 L-190 150" />
-          <rect x="372" y="120" width="20" height="428" />
-          <rect x="350" y="536" width="64" height="14" rx="3" />
-          <path d="M382 124 C382 84 346 60 300 60" stroke-width="11" />
-          <rect x="316" y="170" width="56" height="46" rx="8" />
-          <circle cx="344" cy="193" r="12" />
-          <g transform="rotate(-3 197 60)">
-            <rect x="90" y="22" width="214" height="76" rx="14" />
-            <path d="M92 20 H300 L286 6 H108 Z" />
-            <path d="M150 42 V78 M172 42 V78 M194 42 V78" stroke-width="3" />
-            <ellipse cx="90" cy="60" rx="14" ry="34" />
-            <ellipse cx="90" cy="60" rx="6" ry="16" />
-            <circle class="led" cx="270" cy="40" r="5" />
-          </g>
-        </svg>
-        <div class="wrap">
-          <div>
+        <div class="fines-top">
+          <!-- Cámara de fondo: recorte del diseño de la clienta (assets/camara-section.jpeg) -->
+          <div class="fines-photo-bg" aria-hidden="true"></div>
+          <div class="wrap fines-copy">
             <h2 class="rv">
-              Infracciones de tránsito: <em>no pagues demás</em>
+              Infracciones<br />de tránsito:<br /><em>no pagues<br />demás</em>
             </h2>
+            <span class="rule" aria-hidden="true"></span>
             <p class="rv">
               Realizamos descuentos en infracciones de todo el país. Mandanos tu
               consulta y te contamos qué se puede hacer, sin compromiso.
@@ -1594,28 +1645,37 @@
               <svg><use href="#wa" /></svg>Consultar mi infracción
             </a>
           </div>
-          <div class="fines-visual">
-            <!-- Foto: AITFFan1, Wikimedia Commons, CC0 (ver assets/CREDITOS.md) -->
-            <figure class="fines-photo">
-              <img
-                src="assets/camara-transito.jpg"
-                alt="Dos cámaras de control de tránsito montadas en un poste, de noche"
-                width="1000"
-                height="440"
-                loading="lazy"
-              />
-              <figcaption>Cámaras de tránsito</figcaption>
-            </figure>
-            <div class="ticket rv" aria-hidden="true">
+          <svg
+            class="fines-swoosh"
+            viewBox="0 0 1000 100"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              class="fill"
+              d="M0 100 L420 100 C640 96 850 62 1000 0 L1000 100 Z"
+            />
+            <path class="line" d="M420 100 C640 96 850 62 1000 0" />
+          </svg>
+        </div>
+        <div class="wrap fines-ticket">
+          <div class="ticket rv">
+            <div class="tk-body" aria-hidden="true">
               <div class="tk-top">
                 <span>Infracciones</span><span>Todo el país</span>
               </div>
               <div class="q">¿Tenés infracciones<br />de tránsito?</div>
               <div class="big"><span>No pagues</span><br />demás</div>
-              <div class="foot">
-                <span>Descuentos</span><span>Consultas sin cargo</span>
-              </div>
+              <div class="tk-end"></div>
             </div>
+            <a
+              class="tk-wa"
+              data-wa="Hola, tengo infracciones de tránsito y quiero consultar por un descuento."
+              href="https://wa.me/5491159697828"
+              aria-label="Consultar mi infracción por WhatsApp"
+            >
+              <svg><use href="#wa" /></svg>
+            </a>
           </div>
         </div>
       </section>
@@ -1676,14 +1736,21 @@
         <div class="wrap about-grid">
           <div>
             <h2 class="rv">Quiénes somos</h2>
+            <p class="about-sub rv">Gestoría Automotor Efata</p>
             <p class="rv">
-              Somos Gestoría Automotor Efata, de Ezeiza, Buenos Aires. Hacemos
-              trámites registrales del automotor con experiencia, compromiso y
+              En Gestoría Automotor Efata te acompañamos en tus trámites
+              automotores con atención personalizada, compromiso y
               responsabilidad.
             </p>
             <p class="rv">
-              Nuestro objetivo es que cada cliente pueda hacer sus trámites de
-              forma fácil, segura y sin complicaciones.
+              Estamos en Ezeiza, Buenos Aires, y trabajamos en todo el país,
+              brindando asesoramiento claro y soluciones para tus trámites
+              registrales.
+            </p>
+            <p class="rv">
+              Nuestro compromiso es acompañarte en cada etapa para que puedas
+              resolver tus trámites de manera simple, segura y sin
+              complicaciones.
             </p>
             <ul class="pillars rv">
               <li>
@@ -1721,7 +1788,7 @@
               <path d="M6 37h13M44 37h38M105 37h9" />
               <path d="M19 37a12 12 0 0 1 25 0M82 37a12 12 0 0 1 23 0" />
             </svg>
-            <h3>Tu vehículo,<br />en buenas manos.</h3>
+            <h3>Tu trámite,<br />en buenas manos.</h3>
             <span>Ezeiza · Buenos Aires</span>
           </div>
         </div>
@@ -1737,8 +1804,8 @@
               <span class="tag-ex">Ejemplo</span>
               <div class="stars" aria-label="5 estrellas">★★★★★</div>
               <blockquote>
-                “Excelente atención, súper responsables y siempre atentos a todo.
-                Los recomiendo.”
+                “Excelente atención, súper responsables y siempre atentos a
+                todo. Los recomiendo.”
               </blockquote>
               <figcaption class="who">Nombre del cliente</figcaption>
             </figure>
