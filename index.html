@@ -683,29 +683,19 @@
         overflow: hidden;
         padding: 120px 0 130px;
       }
+      .fines-mobile {
+        display: none;
+      }
       .fines-photo-bg {
         position: absolute;
         top: 0;
         right: 0;
-        bottom: 0;
-        /* Proporción del diseño: la cámara ocupa la mitad del ancho, pegada al borde derecho.
-           La imagen es alta (cámara + calle + poste) y el bloque recorta lo que sobra. */
-        width: min(50%, 640px);
-        background:
-          linear-gradient(
-            90deg,
-            rgba(10, 35, 71, 0.8),
-            rgba(10, 35, 71, 0) 55%
-          ),
-          url("assets/camara-fondo.jpg") right top / 100% auto no-repeat;
-        -webkit-mask-image:
-          linear-gradient(to right, transparent 0%, #000 34%),
-          linear-gradient(to bottom, #000 85%, transparent 100%);
-        -webkit-mask-composite: source-in;
-        mask-image:
-          linear-gradient(to right, transparent 0%, #000 34%),
-          linear-gradient(to bottom, #000 85%, transparent 100%);
-        mask-composite: intersect;
+        /* La cámara ocupa un poco más de la mitad del ancho, pegada al borde derecho, con la
+           visera completa. Borde recto y nítido: sin degradés, difuminados ni recortes en diagonal. */
+        width: min(58%, 720px);
+        aspect-ratio: 924 / 1576;
+        /* cover = nunca se estira ni deforma; con el aspect-ratio de la imagen, no recorta nada */
+        background: url("assets/camara-fondo.jpg") center top / cover no-repeat;
       }
       .fines-copy {
         position: relative;
@@ -1277,6 +1267,16 @@
         .fines-top {
           padding: 100px 0 120px;
         }
+        /* pantallas medianas (641-900): foto más angosta y texto más corto, para que no se toquen */
+        .fines-photo-bg {
+          width: 50%;
+        }
+        .fines h2 {
+          font-size: clamp(2.4rem, 6vw, 4rem);
+        }
+        .fines p {
+          max-width: 19rem;
+        }
         .plate-stage {
           min-height: 280px;
           margin-top: 1rem;
@@ -1359,8 +1359,23 @@
           width: 100%;
           justify-content: center;
         }
+        .fines-top {
+          padding: 90px 0 100px;
+        }
+        .fines-photo-bg {
+          width: 62%;
+        }
+        .fines h2 {
+          font-size: 2.4rem;
+        }
+        .fines .rule {
+          margin-top: 1.1rem;
+        }
         .fines p {
-          max-width: 17.5rem;
+          max-width: 16.5rem;
+          margin: 1.1rem 0 1.5rem;
+          font-size: 1rem;
+          text-shadow: 0 1px 8px rgba(10, 35, 71, 0.9);
         }
         .ticket {
           padding: 1.6rem 1.4rem 2.2rem;
@@ -1380,6 +1395,135 @@
       @media (max-width: 400px) {
         .brand-name small {
           display: none;
+        }
+      }
+      /* ---------- Infracciones en celular: idéntico al diseño de la clienta (assets/camara-section.jpeg) ----------
+         En celular la sección ES esa imagen. El texto real sigue en el HTML (oculto a la vista, para buscadores y
+         lectores de pantalla) y los dos botones son links reales, invisibles, puestos encima de los de la imagen. */
+      @media (max-width: 640px) {
+        /* La imagen (en flujo) define el alto de la sección: se ajusta a cualquier ancho
+           manteniendo su proporción, sin estirarse. */
+        .fines {
+          position: relative;
+          padding: 0;
+          overflow: hidden;
+          background: var(--navy-deep);
+        }
+        .fines-mobile {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+        .fines::before,
+        .fines::after,
+        .fines .fines-photo-bg,
+        .fines .fines-swoosh,
+        .fines .ticket .tk-body {
+          display: none;
+        }
+        /* Los dos frentes se vuelven capas que cubren la imagen; solo los botones reciben toques */
+        .fines .fines-top,
+        .fines .fines-ticket {
+          position: absolute;
+          inset: 0;
+          padding: 0;
+          margin: 0;
+          z-index: 2;
+          pointer-events: none;
+        }
+        .fines .wrap,
+        .fines .fines-copy,
+        .fines .ticket {
+          position: static;
+          padding: 0;
+          margin: 0;
+          max-width: none;
+          background: none;
+          box-shadow: none;
+          filter: none;
+          -webkit-mask: none;
+          mask: none;
+        }
+        .fines .rv {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        /* Texto real, oculto a la vista pero legible por buscadores y lectores de pantalla */
+        .fines .fines-copy h2,
+        .fines .fines-copy p,
+        .fines .fines-copy .rule {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: 0;
+          border: 0;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+        }
+        /* Botones: links reales e invisibles sobre los de la imagen, con animación al tocar */
+        .fines .fines-copy .btn-wa,
+        .fines .ticket .tk-wa {
+          position: absolute;
+          display: block;
+          margin: 0;
+          padding: 0;
+          border: 0;
+          color: transparent;
+          background: transparent;
+          box-shadow: none;
+          pointer-events: auto;
+          -webkit-tap-highlight-color: transparent;
+          transition: transform 0.12s ease, background 0.12s ease;
+        }
+        .fines .fines-copy .btn-wa svg,
+        .fines .ticket .tk-wa svg {
+          opacity: 0;
+        }
+        .fines .fines-copy .btn-wa {
+          left: 5.4%;
+          top: 52.4%;
+          width: 59.6%;
+          height: 7.8%;
+          border-radius: 999px;
+        }
+        .fines .ticket .tk-wa {
+          left: 78.3%;
+          top: 84.6%;
+          width: 14.8%;
+          height: 9.9%;
+          right: auto;
+          bottom: auto;
+          border-radius: 50%;
+        }
+        /* feedback al presionar el botón blanco: destello y leve hundido */
+        .fines .fines-copy .btn-wa:active {
+          background: rgba(255, 255, 255, 0.3);
+          transform: scale(0.97);
+        }
+        /* el círculo de WhatsApp late para señalar que es tocable, y responde al toque */
+        .fines .ticket .tk-wa::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          border: 3px solid var(--wa);
+          animation: ping 2.4s ease-out infinite;
+        }
+        .fines .ticket .tk-wa:active {
+          transform: scale(0.9);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .fines .ticket .tk-wa::after {
+            animation: none;
+          }
+        }
+        .fines .fines-copy .btn-wa:focus-visible,
+        .fines .ticket .tk-wa:focus-visible {
+          outline: 3px solid #fff;
+          outline-offset: 2px;
         }
       }
     </style>
@@ -1691,6 +1835,13 @@
 
       <!-- INFRACCIONES -->
       <section class="fines" id="infracciones">
+        <!-- Celular: la imagen del diseño tal cual, responsive (define el alto de la sección) -->
+        <img
+          class="fines-mobile"
+          src="assets/camara-section.jpeg"
+          alt=""
+          aria-hidden="true"
+        />
         <div class="fines-top">
           <!-- Cámara de fondo: recorte del diseño de la clienta (assets/camara-section.jpeg) -->
           <div class="fines-photo-bg" aria-hidden="true"></div>
