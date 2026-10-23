@@ -200,6 +200,16 @@
         outline: 0;
       }
 
+      /* Logo de la clienta redibujado en SVG (claro, sobre el azul del header) */
+      .brand svg.brand-logo {
+        display: block;
+        width: auto;
+        height: 76px;
+        color: var(--paper);
+        overflow: visible;
+        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+      }
+
       /* ---------- Hero ---------- */
       .hero {
         position: relative;
@@ -670,6 +680,7 @@
       /* bloque superior: texto + foto de la cámara de fondo */
       .fines-top {
         position: relative;
+        overflow: hidden;
         padding: 120px 0 130px;
       }
       .fines-photo-bg {
@@ -677,17 +688,23 @@
         top: 0;
         right: 0;
         bottom: 0;
-        width: min(62%, 780px);
+        /* Proporción del diseño: la cámara ocupa la mitad del ancho, pegada al borde derecho.
+           La imagen es alta (cámara + calle + poste) y el bloque recorta lo que sobra. */
+        width: min(50%, 640px);
         background:
-          linear-gradient(90deg, rgba(10, 35, 71, 0.92), rgba(10, 35, 71, 0) 72%),
-          url("assets/camara-fondo.jpg") 45% 10% / cover no-repeat;
+          linear-gradient(
+            90deg,
+            rgba(10, 35, 71, 0.8),
+            rgba(10, 35, 71, 0) 55%
+          ),
+          url("assets/camara-fondo.jpg") right top / 100% auto no-repeat;
         -webkit-mask-image:
-          linear-gradient(to right, transparent 0%, #000 50%),
-          linear-gradient(to bottom, #000 80%, transparent 100%);
+          linear-gradient(to right, transparent 0%, #000 34%),
+          linear-gradient(to bottom, #000 85%, transparent 100%);
         -webkit-mask-composite: source-in;
         mask-image:
-          linear-gradient(to right, transparent 0%, #000 50%),
-          linear-gradient(to bottom, #000 80%, transparent 100%);
+          linear-gradient(to right, transparent 0%, #000 34%),
+          linear-gradient(to bottom, #000 85%, transparent 100%);
         mask-composite: intersect;
       }
       .fines-copy {
@@ -909,7 +926,7 @@
         box-shadow: 9px 9px 0 var(--accent);
       }
       .about-card svg {
-        width: 120px;
+        width: 190px;
         height: auto;
         margin-bottom: 1.2rem;
       }
@@ -1260,9 +1277,6 @@
         .fines-top {
           padding: 100px 0 120px;
         }
-        .fines-photo-bg {
-          width: 82%;
-        }
         .plate-stage {
           min-height: 280px;
           margin-top: 1rem;
@@ -1295,6 +1309,10 @@
       @media (max-width: 520px) {
         .brand svg {
           width: 50px;
+        }
+        .brand svg.brand-logo {
+          width: auto;
+          height: 56px;
         }
         .brand-name b {
           font-size: 1.5rem;
@@ -1341,9 +1359,6 @@
           width: 100%;
           justify-content: center;
         }
-        .fines-photo-bg {
-          width: 88%;
-        }
         .fines p {
           max-width: 17.5rem;
         }
@@ -1378,30 +1393,81 @@
           d="M16.04 3C9.4 3 4.02 8.37 4.02 15c0 2.12.55 4.18 1.6 6L4 28l7.17-1.88A12 12 0 0 0 16.04 27C22.67 27 28.05 21.63 28.05 15S22.67 3 16.04 3Zm0 21.9c-1.78 0-3.52-.48-5.04-1.38l-.36-.21-3.8 1 1.02-3.7-.24-.38A9.86 9.86 0 0 1 6.1 15c0-5.46 4.46-9.9 9.94-9.9 5.47 0 9.93 4.44 9.93 9.9s-4.46 9.9-9.93 9.9Zm5.45-7.4c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.24-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.53.08-.8.38-.28.3-1.06 1.03-1.06 2.5s1.08 2.9 1.23 3.1c.15.2 2.13 3.24 5.15 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"
         />
       </symbol>
+      <!-- Auto del logo de Efata (lo usan el header y Quiénes somos) -->
+      <symbol id="car-mark" viewBox="0 0 740 230">
+        <g fill="currentColor">
+          <!-- techo sólido con un aro fino alrededor del parabrisas -->
+          <path
+            fill-rule="evenodd"
+            d="M105 127C112 95 128 62 160 40C200 14 280 8 370 8C470 8 545 16 575 40C600 62 612 95 620 127Z
+                   M142 118C148 92 160 72 180 58C232 38 330 34 372 34C440 34 520 38 558 58C578 72 590 92 596 118C500 110 250 110 142 118Z
+                   M156 112C161 94 171 80 188 68C236 50 330 46 372 46C440 46 516 50 552 68C569 80 579 94 584 112C500 104 250 104 156 112Z"
+          />
+          <!-- espejos -->
+          <path
+            d="M24 100C24 92 40 88 62 90C80 91 94 97 96 108L96 128L70 132C46 130 28 116 24 100Z"
+          />
+          <path
+            transform="translate(725 0) scale(-1 1)"
+            d="M24 100C24 92 40 88 62 90C80 91 94 97 96 108L96 128L70 132C46 130 28 116 24 100Z"
+          />
+          <!-- curvas de la carrocería -->
+          <path
+            d="M4 204C70 162 170 132 330 125C450 121 560 124 612 129C520 134 420 139 300 152C200 164 100 190 4 204Z"
+          />
+          <path
+            d="M130 172C230 152 330 140 440 132C470 130 482 131 484 132C400 140 300 158 130 172Z"
+          />
+          <path
+            d="M415 162C470 149 540 143 600 141C660 139 702 152 722 180C728 192 732 202 734 212C710 194 684 182 650 178C590 174 500 180 415 162Z"
+          />
+        </g>
+      </symbol>
     </svg>
 
     <header class="top">
       <div class="wrap">
-        <a class="brand" href="#" aria-label="Gestoría Automotor Efata">
+        <a
+          class="brand"
+          href="#"
+          aria-label="Gestoría Automotor Efata, ir al inicio"
+        >
           <svg
-            viewBox="0 0 124 52"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3.2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
+            class="brand-logo"
+            viewBox="0 0 740 450"
+            role="img"
+            aria-label="Efata Gestoría Automotor"
           >
-            <path
-              d="M6 37c0-6 4-9 10-10l12-3c5-6 12-11 20-12 12-2 25-1 33 6l8 8 14 3c4 1 5 4 5 8"
-            />
-            <path d="M28 24c8-3 20-4 34-3" />
-            <path d="M6 37h13M44 37h38M105 37h9" />
-            <path d="M19 37a12 12 0 0 1 25 0M82 37a12 12 0 0 1 23 0" />
+            <use href="#car-mark" width="740" height="230" />
+            <!-- nombre -->
+            <text
+              x="370"
+              y="354"
+              text-anchor="middle"
+              fill="currentColor"
+              font-family="Barlow Condensed, sans-serif"
+              font-weight="800"
+              font-size="146"
+              textLength="670"
+              lengthAdjust="spacingAndGlyphs"
+            >
+              EFATA
+            </text>
+            <rect x="30" y="368" width="680" height="6" fill="currentColor" />
+            <text
+              x="370"
+              y="436"
+              text-anchor="middle"
+              fill="currentColor"
+              font-family="Plus Jakarta Sans, sans-serif"
+              font-weight="600"
+              font-size="56"
+              textLength="660"
+              lengthAdjust="spacingAndGlyphs"
+            >
+              GESTORÍA AUTOMOTOR
+            </text>
           </svg>
-          <span class="brand-name"
-            ><small>Gestoría Automotor</small><b>Efata</b></span
-          >
         </a>
         <nav class="nav-right">
           <a class="nav-link" href="#tramites">Trámites</a>
@@ -1772,21 +1838,8 @@
             </ul>
           </div>
           <div class="about-card rv">
-            <svg
-              viewBox="0 0 124 52"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="3.2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path
-                d="M6 37c0-6 4-9 10-10l12-3c5-6 12-11 20-12 12-2 25-1 33 6l8 8 14 3c4 1 5 4 5 8"
-              />
-              <path d="M28 24c8-3 20-4 34-3" />
-              <path d="M6 37h13M44 37h38M105 37h9" />
-              <path d="M19 37a12 12 0 0 1 25 0M82 37a12 12 0 0 1 23 0" />
+            <svg class="about-logo" viewBox="0 0 740 230" aria-hidden="true">
+              <use href="#car-mark" width="740" height="230" />
             </svg>
             <h3>Tu trámite,<br />en buenas manos.</h3>
             <span>Ezeiza · Buenos Aires</span>
