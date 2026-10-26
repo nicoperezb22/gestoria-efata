@@ -997,7 +997,7 @@
         border-radius: 4px;
       }
 
-      /* ---------- Recupero en 24 hs ---------- */
+      /* ---------- Recupero de CAT ---------- */
       .btn-wa.navy {
         background: var(--navy);
         color: var(--paper);
@@ -1043,11 +1043,11 @@
         border-radius: 50%;
         border: 3px dashed rgba(244, 248, 252, 0.4);
       }
-      .express-badge b {
-        font-family: var(--display);
-        font-weight: 800;
-        font-size: clamp(5rem, 12vw, 8rem);
-        line-height: 0.8;
+      .express-badge .bolt {
+        width: clamp(4.5rem, 11vw, 7rem);
+        height: auto;
+        color: var(--paper);
+        margin-inline: auto;
       }
       .express-badge span {
         margin-top: 0.7rem;
@@ -1897,23 +1897,25 @@
         </div>
       </section>
 
-      <!-- RECUPERO EN 24 HS -->
-      <!-- Texto mínimo a propósito: falta confirmar con ella qué cubre el "24 hs" y sus condiciones -->
+      <!-- RECUPERO DE CAT -->
       <section class="express" id="recupero">
         <div class="wrap express-grid">
           <div class="express-badge rv" aria-hidden="true">
-            <b>24</b><span>hs</span>
+            <svg class="bolt" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="currentColor" d="M30 4 L13 27 L23 27 L18 44 L35 21 L25 21 Z" />
+            </svg>
+            <span>rápido</span>
           </div>
           <div>
             <div class="eyebrow rv">Recuperación</div>
-            <h2 class="rv">Recupero de CAT en 24 hs</h2>
+            <h2 class="rv">Recupero de CAT lo más rápido posible</h2>
             <p class="rv">
               Recuperación de la Constancia de Asignación de Título (CAT).
-              Contanos tu caso por WhatsApp y te decimos cómo avanzar.
+              Contanos tu caso por WhatsApp y lo resolvemos cuanto antes.
             </p>
             <a
               class="btn-wa navy rv"
-              data-wa="Hola, quiero consultar por el recupero de CAT en 24 hs."
+              data-wa="Hola, quiero consultar por el recupero de CAT."
               href="https://wa.me/5491159697828"
             >
               <svg><use href="#wa" /></svg>Consultar por el recupero
